@@ -171,8 +171,45 @@ function rcn_feed_output() {
 }
 
 /**
+ * Insert Post to Database
+ */
+
+
+function rcn_add_custom_post() {
+    $rcn_feed_data = rcn_feed_output();
+    $prefix = 'recruit_now_';
+
+    if ('api_end_point_missing' !== $rcn_feed_data && false !== $rcn_feed_data) {
+        // var_dump($rcn_feed_data);
+        foreach ($rcn_feed_data as $element) {
+            // print_r($element);
+            // format publication date to Y-m-d
+            // echo date('Y-m-d', strtotime($element['PublicationDate'])); //
+            // print_r($element['PublicationDate']);
+            // print_r($element['Id']);
+            // print_r($element['Title']);
+
+
+            $post = array(
+                // 'ID'           => 2005,
+                'post_title'   => $element['Title'],
+                // 'post_content' => 'This is my post.',
+                'post_status'  => 'publish',
+                'post_author'  => 1,
+                'post_type'    => 'post'
+            );
+            $post_id = wp_insert_post($post);
+            update_post_meta($post_id, $prefix . 'vacancies_id', $element['Id']);
+            update_post_meta($post_id, $prefix . 'remote_id', $element['RemoteId']);
+        }
+    }
+}
+
+
+/**
  * Acceess RCN Remote Data Refresh
- * 
+ * Accessible only for Admin
+ * Access By Ajax Call 
  */
 
 function rcn_feed_refresh() {
@@ -186,6 +223,29 @@ function rcn_feed_refresh() {
         wp_die();
     }
 
+    rcn_add_custom_post();
+    // add_action('init', 'rcn_add_custom_post', 99);
+
     echo wp_json_encode('success');
     wp_die();
 }
+
+
+
+/**
+ * Below Backup Data for Testing
+ */
+
+// $rcn_feed_data = rcn_feed_output();
+
+// if ('api_end_point_missing' !== $rcn_feed_data && false !== $rcn_feed_data) {
+// 	// var_dump($rcn_feed_data);
+// 	foreach ($rcn_feed_data as $element) {
+// 		// print_r($element);
+// 		// format publication date to Y-m-d
+// 		echo date('Y-m-d', strtotime($element['PublicationDate']));
+// 		// print_r($element['PublicationDate']);
+// 		// print_r($element['Id']);
+// 		// print_r($element['Title']);
+// 	}
+// }

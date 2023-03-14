@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name: Recruit Now
  * Plugin URI: https://www.maatwerkonline.nl/
@@ -21,6 +22,7 @@ if (!defined('ABSPATH')) {
 require_once(plugin_dir_path(__FILE__) . 'admin/admin.php');
 require_once(plugin_dir_path(__FILE__) . 'Api/DataFeed.php');
 require_once(plugin_dir_path(__FILE__) . 'Api/ShortCode.php');
+require_once(plugin_dir_path(__FILE__) . 'Api/CustomMetaBox.php');
 
 /**
  * Blocks Final Class
@@ -259,7 +261,7 @@ final class RCN_BLOCKS_CLASS {
 	 * Admin Enqueue Scripts
 	 */
 	public function rcn_admin_enqueue_scripts($screen) {
-		if ('toplevel_page_recruit_now' === $screen || 'recruit-now_page_recruit_now_vacancies' === $screen ) {
+		if ('toplevel_page_recruit_now' === $screen || 'recruit-now_page_recruit_now_vacancies' === $screen) {
 
 			wp_enqueue_style('rcn-admin-styles', plugin_dir_url(__FILE__) . 'admin/css/admin.css', array(), '1.0.0', 'all');
 		}
@@ -296,19 +298,3 @@ final class RCN_BLOCKS_CLASS {
  */
 
 RCN_BLOCKS_CLASS::init();
-
-
-
-// $rcn_feed_data = rcn_feed_output();
-
-// if ('api_end_point_missing' !== $rcn_feed_data && false !== $rcn_feed_data) {
-// 	// var_dump($rcn_feed_data);
-// 	foreach ($rcn_feed_data as $element) {
-// 		// print_r($element);
-// 		// format publication date to Y-m-d
-// 		echo date('Y-m-d', strtotime($element['PublicationDate']));
-// 		// print_r($element['PublicationDate']);
-// 		// print_r($element['Id']);
-// 		// print_r($element['Title']);
-// 	}
-// }
