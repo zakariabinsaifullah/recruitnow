@@ -1,0 +1,16 @@
+{
+	"apiVersion": 2,
+	"name": "rcn/open-application-form",
+	"version": "0.1.0",
+	"title": "Open Application Form",
+	"category": "rcn-blocks",
+	"description": "show open application form widget",
+	"supports": {
+		"html": false,
+		"anchor": true
+	},
+	"textdomain": "recruitnow",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

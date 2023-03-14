@@ -1,0 +1,30 @@
+{
+	"apiVersion": 2,
+	"name": "rcn/jobboard-application-form",
+	"version": "0.1.0",
+	"title": "Jobboard Application Form",
+	"category": "rcn-blocks",
+	"description": "show application form widget",
+	"supports": {
+		"html": false,
+		"anchor": true
+	},
+	"attributes": {
+		"btnText": {
+			"type": "string",
+			"default": "Apply"
+		},
+		"vacancyId": {
+			"type": "string",
+			"default": "vacancies-2-B"
+		},
+		"titlePrefix": {
+			"type": "string",
+			"default": "Solliciteer voor: "
+		}
+	},
+	"textdomain": "recruitnow",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

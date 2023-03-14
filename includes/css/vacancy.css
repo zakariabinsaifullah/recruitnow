@@ -1,0 +1,25 @@
+.recruit-single-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+}
+
+.vacancy-content table {
+    margin-bottom: 15px;
+}
+
+.vacancy-content table {
+    width: 100%;
+}
+
+
+/* Mobile View */
+@media only screen and (max-width: 767px) {
+    .recruit-single-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .vacancy-content table {
+        width: auto !important;
+    }   
+}

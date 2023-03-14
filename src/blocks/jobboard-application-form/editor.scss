@@ -1,0 +1,39 @@
+/*
+* Style Works for Editor Only
+*/
+.wp-block-rcn-jobboard-application-form {
+	background: #ddecff;
+	padding: 30px;
+	box-sizing: border-box;
+	border: 1px solid #2584ff;
+	margin: 15px auto !important;
+	.note,
+	.error {
+		margin: 0 0 10px !important;
+		font-size: 14px;
+	}
+
+	.note {
+		color: #0060dd;
+	}
+
+	.error {
+		color: #bf0f0f;
+	}
+
+	.components-card__header {
+		font-size: 14px;
+	}
+
+	.field-note {
+		font-size: 12px;
+		font-style: italic;
+		margin: 0 0 24px;
+	}
+
+	.settings-area {
+		.spacer {
+			height: 10px;
+		}
+	}
+}

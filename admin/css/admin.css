@@ -1,0 +1,119 @@
+/* @package Recruit Now
+* Admin Setting Page
+*/
+
+/* Plugin Head */
+.plugin-head {
+	background: #f7f7f7;
+	box-sizing: border-box;
+	padding: 15px 30px;
+	box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%), 0 1px 2px -1px rgb(0 0 0 / 5%);
+}
+
+div#wpcontent {
+	padding-left: 0;
+}
+
+.plugin-title {
+	margin: 0 0 10px;
+	padding: 0;
+	font-size: 1.4rem;
+}
+
+.plugin-description {
+	margin: 0;
+}
+
+/* Plugin body */
+.plugin-body {
+	padding: 10px 0 0 30px;
+}
+
+h2 {
+	margin-bottom: 0;
+	color: #000;
+}
+
+.setting-info {
+	margin-top: 8px;
+}
+
+.rcn_input,
+.wp-core-ui select,
+.form-table th {
+	min-width: 300px;
+}
+
+button#rcn-refresh-data {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 1;
+}
+
+button#rcn-refresh-data span.dashicons {
+    font-size: 13px;
+    line-height: 20px;
+}
+
+h2#swal2-title {
+    font-size: 20px;
+}
+
+div#swal2-html-container {
+    font-size: 14px;
+}
+
+.recruit-shortcode-note {
+    margin-top: 10px;
+    font-size: 13px;
+    font-style: italic;
+    color: #606060;
+}
+
+/* 
+* Vacancy Page
+*/
+
+.plugin-head-vacancies {
+	padding: 10px 30px 0;
+}
+
+.plugin-title {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    margin-bottom: 10px !important;
+}
+
+.vacancies-page table {
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+	width: 98%;
+}
+
+.vacancies-page td {
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+
+.vacancies-page th {
+    border-right: 1px solid #ccc;
+	background: #2271b1;
+	color: #fff;
+}
+
+.vacancies-page tr td:last-child, .vacancies-page .tr th:last-child {
+	border-right: none;
+}
+
+.vacancies-page tr:not(:first-child) {
+	background-color: #fcfcfc;
+}
+
+.vacancies-page tr td:not(:nth-child(2)){
+	text-align: center;
+}
