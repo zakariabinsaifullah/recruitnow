@@ -1,9 +1,14 @@
 <?php
 
 
+/**
+ * Data Feed
+ */
+
 class RcnDataFeed {
 
     protected $API_END_POINT = false;
+
 
     public function __construct() {
 
@@ -189,16 +194,28 @@ function rcn_add_custom_post() {
             // print_r($element['Id']);
             // print_r($element['Title']);
 
+            $post_title =  sanitize_title($element['Title']);
 
             $post = array(
-                // 'ID'           => 2005,
-                'post_title'   => $element['Title'],
-                // 'post_content' => 'This is my post.',
+                'post_title'   => $post_title,
                 'post_status'  => 'publish',
-                'post_author'  => 1,
-                'post_type'    => 'post'
+                // 'post_author'  => 1,
+                'post_type'    => 'vacancies'
             );
-            $post_id = wp_insert_post($post);
+            // $post_id = wp_insert_post($post);
+
+            /**
+             * Insert Post if not exists
+             */
+            // $post_id = post_exists($post_title) or wp_insert_post($post);
+
+            $post_id = '';
+            if (post_exists($post_title)) {
+                $post_id = post_exists($post_title) or wp_insert_post($post);
+            } else {
+                $post_id = wp_insert_post($post);
+            }
+
             update_post_meta($post_id, $prefix . 'vacancies_id', $element['Id']);
             update_post_meta($post_id, $prefix . 'remote_id', $element['RemoteId']);
         }

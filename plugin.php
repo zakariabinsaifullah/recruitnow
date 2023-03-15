@@ -20,9 +20,9 @@ if (!defined('ABSPATH')) {
 
 // Include admin settings
 require_once(plugin_dir_path(__FILE__) . 'admin/admin.php');
+require_once(plugin_dir_path(__FILE__) . 'Api/CustomMetaBox.php');
 require_once(plugin_dir_path(__FILE__) . 'Api/DataFeed.php');
 require_once(plugin_dir_path(__FILE__) . 'Api/ShortCode.php');
-require_once(plugin_dir_path(__FILE__) . 'Api/CustomMetaBox.php');
 
 /**
  * Blocks Final Class

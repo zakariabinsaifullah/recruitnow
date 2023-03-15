@@ -1,9 +1,10 @@
 <?php
 
-
-
-
-
+/**
+ * Important class
+ * Generate Custom Post Type
+ * Generate Custom Meta Boxes
+ */
 
 class Custom_Meta_Box {
     private $screen = array(
@@ -458,31 +459,32 @@ class Custom_Meta_Box {
 
     public function rcn_custom_post_type() {
         $labels = array(
-            'name' => 'Vacancies',
-            'singular_name' => 'Vacancy',
-            'add_new' => 'Add New Vacancy',
-            'add_new_item' => 'Add New Vacancy',
-            'edit_item' => 'Edit Vacancy',
-            'new_item' => 'New Vacancy',
-            'all_items' => 'All Vacancies',
-            'view_item' => 'View Vacancy',
-            'search_items' => 'Search Vacancies',
-            'not_found' => 'No Vacancies found',
+            'name'               => 'Vacancies',
+            'singular_name'      => 'Vacancy',
+            'add_new'            => 'Add New Vacancy',
+            'add_new_item'       => 'Add New Vacancy',
+            'edit_item'          => 'Edit Vacancy',
+            'new_item'           => 'New Vacancy',
+            'all_items'          => 'All Vacancies',
+            'view_item'          => 'View Vacancy',
+            'search_items'       => 'Search Vacancies',
+            'not_found'          => 'No Vacancies found',
             'not_found_in_trash' => 'No Vacancies found in Trash',
-            'parent_item_colon' => '',
-            'menu_name' => 'Vacancies'
+            'parent_item_colon'  => '',
+            'menu_name'          => 'Vacancies'
         );
         $args = array(
-            'labels' => $labels,
-            'description' => 'Holds our Vacancies and Vacancy specific data',
-            'public' => true,
-            'menu_position' => 5,
-            'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'),
-            'has_archive' => true,
-            'rewrite' => array('slug' => 'vacancies'),
-            'show_in_rest' => true,
-            'rest_base' => 'vacancies',
+            'labels'                => $labels,
+            'description'           => 'Holds our Vacancies and Vacancy specific data',
+            'public'                => true,
+            'menu_position'         => 5,
+            'supports'              => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'),
+            'has_archive'           => true,
+            'rewrite'               => array('slug' => 'vacancies'),
+            'show_in_rest'          => true,
+            'rest_base'             => 'vacancies',
             'rest_controller_class' => 'WP_REST_Posts_Controller',
+            'menu_icon'             => 'dashicons-category',
         );
         register_post_type('vacancies', $args);
     }
