@@ -1,284 +1,592 @@
 <?php
 
-add_filter('rwmb_meta_boxes', 'your_prefix_register_meta_boxes');
 
-function your_prefix_register_meta_boxes($meta_boxes) {
-    $prefix = 'recruit_now_';
 
-    $meta_boxes[] = [
-        'title'   => esc_html__('Vacancies Field Group', 'recruit-now'),
-        'id'      => 'untitled',
-        'context' => 'normal',
-        'fields'  => [
-            [
-                'type' => 'heading',
-                'name' => esc_html__('JSON Field', 'recruit-now'),
-            ],
-            [
-                'type' => 'text',
-                'name' => esc_html__('Vacancies ID', 'recruit-now'),
-                'id'   => $prefix . 'vacancies_id',
-            ],
-            [
-                'type' => 'text',
-                'name' => esc_html__('Remote Id', 'recruit-now'),
-                'id'   => $prefix . 'remote_id',
-            ],
-            [
-                'type' => 'text',
-                'name' => esc_html__('Reference Number', 'recruit-now'),
-                'id'   => $prefix . 'reference_number',
-            ],
-            [
-                'type' => 'text',
-                'name' => esc_html__('Title', 'recruit-now'),
-                'id'   => $prefix . 'title',
-            ],
-            [
-                'type' => 'datetime',
-                'name' => esc_html__('Created At', 'recruit-now'),
-                'id'   => $prefix . 'created_at',
-            ],
-            [
-                'type' => 'date',
-                'name' => esc_html__('Last Edited At', 'recruit-now'),
-                'id'   => $prefix . 'last_edited_at',
-            ],
-            [
-                'type' => 'date',
-                'name' => esc_html__('Publication Date', 'recruit-now'),
-                'id'   => $prefix . 'publication_date',
-            ],
-            [
-                'type' => 'date',
-                'name' => esc_html__('Expiration Date', 'recruit-now'),
-                'id'   => $prefix . 'expiration_date',
-            ],
-            [
-                'type' => 'heading',
-                'name' => esc_html__('Descriptions', 'recruit-now'),
-            ],
-            [
-                'type' => 'textarea',
-                'name' => esc_html__('Summary', 'recruit-now'),
-                'id'   => $prefix . 'summary',
-            ],
-            [
-                'type' => 'textarea',
-                'name' => esc_html__('Function Description', 'recruit-now'),
-                'id'   => $prefix . 'function_description',
-            ],
-            [
-                'type' => 'textarea',
-                'name' => esc_html__('Client Description', 'recruit-now'),
-                'id'   => $prefix . 'client_description',
-            ],
-            [
-                'type' => 'textarea',
-                'name' => esc_html__('Requirements Description', 'recruit-now'),
-                'id'   => $prefix . 'requirements_description',
-            ],
-            [
-                'type' => 'textarea',
-                'name' => esc_html__('Offer Description', 'recruit-now'),
-                'id'   => $prefix . 'offer_description',
-            ],
-            [
-                'type' => 'textarea',
-                'name' => esc_html__('Additional Description', 'recruit-now'),
-                'id'   => $prefix . 'additional_description',
-            ],
-            [
-                'type' => 'textarea',
-                'name' => esc_html__('Application Procedure Description', 'recruit-now'),
-                'id'   => $prefix . 'application_procedure_description',
-            ],
-            [
-                'type' => 'heading',
-                'name' => esc_html__('Facets', 'recruit-now'),
-            ],
-            [
-                'type' => 'text',
-                'name' => esc_html__('Regions', 'recruit-now'),
-                'id'   => $prefix . 'regions',
-            ],
-            [
-                'type' => 'text',
-                'name' => esc_html__('Function Types', 'recruit-now'),
-                'id'   => $prefix . 'function_types',
-            ],
-            [
-                'type' => 'text',
-                'name' => esc_html__('Contract Types', 'recruit-now'),
-                'id'   => $prefix . 'contract_types',
-            ],
-            [
-                'type' => 'text',
-                'name' => esc_html__('Experience Levels', 'recruit-now'),
-                'id'   => $prefix . 'experience_levels',
-            ],
-            [
-                'type' => 'text',
-                'name' => esc_html__('Categories', 'recruit-now'),
-                'id'   => $prefix . 'categories',
-            ],
-            [
-                'type' => 'text',
-                'name' => esc_html__('Hours Per Week', 'recruit-now'),
-                'id'   => $prefix . 'hours_per_week',
-            ],
-            [
-                'type' => 'heading',
-                'name' => esc_html__('Application', 'recruit-now'),
-            ],
-            [
-                'type' => 'number',
-                'name' => esc_html__('Max Allowed Applications', 'recruit-now'),
-                'id'   => $prefix . 'max_allowed_applications',
-            ],
-            [
-                'type' => 'number',
-                'name' => esc_html__('Remaining Applications', 'recruit-now'),
-                'id'   => $prefix . 'remaining_applications',
-            ],
-            [
-                'type' => 'checkbox',
-                'name' => esc_html__('Curriculum Vitae Required', 'recruit-now'),
-                'id'   => $prefix . 'curriculum_vitae_required',
-            ],
-            [
-                'type' => 'heading',
-                'name' => esc_html__('Employment', 'recruit-now'),
-            ],
-            [
-                'type' => 'number',
-                'name' => esc_html__('Hours PerWeek Min', 'recruit-now'),
-                'id'   => $prefix . 'hours_perweek_min',
-            ],
-            [
-                'type' => 'number',
-                'name' => esc_html__('Hours Per Week Max', 'recruit-now'),
-                'id'   => $prefix . 'hours_per_week_max',
-            ],
-            [
-                'type' => 'checkbox',
-                'name' => esc_html__('Shift Service', 'recruit-now'),
-                'id'   => $prefix . 'shift_service',
-            ],
-            [
-                'type' => 'number',
-                'name' => esc_html__('Travel Distance', 'recruit-now'),
-                'id'   => $prefix . 'travel_distance',
-            ],
-            [
-                'type' => 'heading',
-                'name' => esc_html__('Work Location', 'recruit-now'),
-            ],
-            [
-                'type' => 'text',
-                'name' => esc_html__('Street', 'recruit-now'),
-                'id'   => $prefix . 'street',
-            ],
-            [
-                'type' => 'number',
-                'name' => esc_html__('House Number', 'recruit-now'),
-                'id'   => $prefix . 'house_number',
-            ],
-            [
-                'type' => 'text',
-                'name' => esc_html__('House Nmber Suffix', 'recruit-now'),
-                'id'   => $prefix . 'house_nmber_suffix',
-            ],
-            [
-                'type' => 'text',
-                'name' => esc_html__('Zip Code', 'recruit-now'),
-                'id'   => $prefix . 'zip_code',
-            ],
-            [
-                'type' => 'text',
-                'name' => esc_html__('City', 'recruit-now'),
-                'id'   => $prefix . 'city',
-            ],
-            [
-                'type' => 'text',
-                'name' => esc_html__('Country', 'recruit-now'),
-                'id'   => $prefix . 'country',
-            ],
-            [
-                'type' => 'text',
-                'name' => esc_html__('Region', 'recruit-now'),
-                'id'   => $prefix . 'region',
-            ],
-            [
-                'type' => 'number',
-                'name' => esc_html__('Latitude', 'recruit-now'),
-                'id'   => $prefix . 'latitude',
-            ],
-            [
-                'type' => 'number',
-                'name' => esc_html__('Longitude', 'recruit-now'),
-                'id'   => $prefix . 'longitude',
-            ],
-            [
-                'type' => 'heading',
-                'name' => esc_html__('Salary', 'recruit-now'),
-            ],
-            [
-                'type' => 'number',
-                'name' => esc_html__('Salary Min', 'recruit-now'),
-                'id'   => $prefix . 'salary_min',
-            ],
-            [
-                'type' => 'number',
-                'name' => esc_html__('Salary Max', 'recruit-now'),
-                'id'   => $prefix . 'salary_max',
-            ],
-            [
-                'type' => 'textarea',
-                'name' => esc_html__('Description', 'recruit-now'),
-                'id'   => $prefix . 'salary_description',
-            ],
-            [
-                'type' => 'heading',
-                'name' => esc_html__('Recruiter', 'recruit-now'),
-            ],
-            [
-                'type' => 'text',
-                'name' => esc_html__('Id', 'recruit-now'),
-                'id'   => $prefix . 'recruiter_id',
-            ],
-            [
-                'type' => 'text',
-                'name' => esc_html__('Remote Id', 'recruit-now'),
-                'id'   => $prefix . 'recruiter_remote_id',
-            ],
-            [
-                'type' => 'text',
-                'name' => esc_html__('First Name', 'recruit-now'),
-                'id'   => $prefix . 'recruiter_first_name',
-            ],
-            [
-                'type' => 'text',
-                'name' => esc_html__('Middle Name', 'recruit-now'),
-                'id'   => $prefix . 'recruiter_middle_name',
-            ],
-            [
-                'type' => 'text',
-                'name' => esc_html__('Email Address', 'recruit-now'),
-                'id'   => $prefix . 'recruiter_email_address',
-            ],
-            [
-                'type' => 'text',
-                'name' => esc_html__('Phone Number', 'recruit-now'),
-                'id'   => $prefix . 'recruiter_phone_number',
-            ],
-            [
-                'type' => 'text',
-                'name' => esc_html__('Mobile Phone Number', 'recruit-now'),
-                'id'   => $prefix . 'recruiter_mobile_phone_number',
-            ],
+
+
+
+class Custom_Meta_Box {
+    private $screen = array(
+        'vacancies'
+    );
+
+    public $prefix = 'recruit_now_';
+
+    private $meta_fields = [
+        // [
+        //     'type' => 'heading',
+        //     'label' => '',
+        // ],
+        [
+            'type'  => 'text',
+            'label' => 'Vacancies ID',
+            'id'    => 'vacancies_id',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Remote Id',
+            'id'    => 'remote_id',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Reference Number',
+            'id'    => 'reference_number',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Title',
+            'id'    => 'title',
+        ],
+        [
+            'type'  => 'datetime',
+            'label' => 'Created At',
+            'id'    => 'created_at',
+        ],
+        [
+            'type'  => 'date',
+            'label' => 'Last Edited At',
+            'id'    => 'last_edited_at',
+        ],
+        [
+            'type'  => 'date',
+            'label' => 'Publication Date',
+            'id'    => 'publication_date',
+        ],
+        [
+            'type'  => 'date',
+            'label' => 'Expiration Date',
+            'id'    => 'expiration_date',
+        ],
+        // [
+        //     'type' => 'heading',
+        //     'label' => 'Descriptions',
+        // ],
+        [
+            'type'  => 'textarea',
+            'label' => 'Summary',
+            'id'    => 'summary',
+        ],
+        [
+            'type'  => 'textarea',
+            'label' => 'Function Description',
+            'id'    => 'function_description',
+        ],
+        [
+            'type'  => 'textarea',
+            'label' => 'Client Description',
+            'id'    => 'client_description',
+        ],
+        [
+            'type'  => 'textarea',
+            'label' => 'Requirements Description',
+            'id'    => 'requirements_description',
+        ],
+        [
+            'type'  => 'textarea',
+            'label' => 'Offer Description',
+            'id'    => 'offer_description',
+        ],
+        [
+            'type'  => 'textarea',
+            'label' => 'Additional Description',
+            'id'    => 'additional_description',
+        ],
+        [
+            'type'  => 'textarea',
+            'label' => 'Application Procedure Description',
+            'id'    => 'application_procedure_description',
+        ],
+        // [
+        //     'type' => 'heading',
+        //     'label' => 'Facets',
+        // ],
+        [
+            'type'  => 'text',
+            'label' => 'Regions',
+            'id'    => 'regions',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Function Types',
+            'id'    => 'function_types',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Contract Types',
+            'id'    => 'contract_types',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Experience Levels',
+            'id'    => 'experience_levels',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Categories',
+            'id'    => 'categories',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Hours Per Week',
+            'id'    => 'hours_per_week',
+        ],
+        // [
+        //     'type' => 'heading',
+        //     'label' => 'Application',
+        // ],
+        [
+            'type'  => 'number',
+            'label' => 'Max Allowed Applications',
+            'id'    => 'max_allowed_applications',
+        ],
+        [
+            'type'  => 'number',
+            'label' => 'Remaining Applications',
+            'id'    => 'remaining_applications',
+        ],
+        [
+            'type'  => 'checkbox',
+            'label' => 'Curriculum Vitae Required',
+            'id'    => 'curriculum_vitae_required',
+        ],
+        // [
+        //     'type' => 'heading',
+        //     'label' => 'Employment',
+        // ],
+        [
+            'type'  => 'number',
+            'label' => 'Hours PerWeek Min',
+            'id'    => 'hours_perweek_min',
+        ],
+        [
+            'type'  => 'number',
+            'label' => 'Hours Per Week Max',
+            'id'    => 'hours_per_week_max',
+        ],
+        [
+            'type'  => 'checkbox',
+            'label' => 'Shift Service',
+            'id'    => 'shift_service',
+        ],
+        [
+            'type'  => 'number',
+            'label' => 'Travel Distance',
+            'id'    => 'travel_distance',
+        ],
+        // [
+        //     'type' => 'heading',
+        //     'label' => 'Work Location',
+        // ],
+        [
+            'type'  => 'text',
+            'label' => 'Street',
+            'id'    => 'street',
+        ],
+        [
+            'type'  => 'number',
+            'label' => 'House Number',
+            'id'    => 'house_number',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'House Nmber Suffix',
+            'id'    => 'house_nmber_suffix',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Zip Code',
+            'id'    => 'zip_code',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'City',
+            'id'    => 'city',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Country',
+            'id'    => 'country',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Region',
+            'id'    => 'region',
+        ],
+        [
+            'type'  => 'number',
+            'label' => 'Latitude',
+            'id'    => 'latitude',
+        ],
+        [
+            'type'  => 'number',
+            'label' => 'Longitude',
+            'id'    => 'longitude',
+        ],
+        // [
+        //     'type' => 'heading',
+        //     'label' => 'Salary',
+        // ],
+        [
+            'type'  => 'number',
+            'label' => 'Salary Min',
+            'id'    => 'salary_min',
+        ],
+        [
+            'type'  => 'number',
+            'label' => 'Salary Max',
+            'id'    => 'salary_max',
+        ],
+        [
+            'type'  => 'textarea',
+            'label' => 'Description',
+            'id'    => 'salary_description',
+        ],
+        // [
+        //     'type' => 'heading',
+        //     'label' => 'Recruiter',
+        // ],
+        [
+            'type'  => 'text',
+            'label' => 'Id',
+            'id'    => 'recruiter_id',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Remote Id',
+            'id'    => 'recruiter_remote_id',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'First Name',
+            'id'    => 'recruiter_first_name',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Middle Name',
+            'id'    => 'recruiter_middle_name',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Email Address',
+            'id'    => 'recruiter_email_address',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Phone Number',
+            'id'    => 'recruiter_phone_number',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Mobile Phone Number',
+            'id'    => 'recruiter_mobile_phone_number',
+        ],
+        // [
+        //     'type' => 'heading',
+        //     'label' => 'Office',
+        // ],
+        [
+            'type'  => 'text',
+            'label' => 'Office Id',
+            'id'    => 'office_id',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Id',
+            'id'    => 'office_id',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Remote Id',
+            'id'    => 'office_remote_id',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Name',
+            'id'    => 'office_name',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Summary',
+            'id'    => 'office_summary',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Description',
+            'id'    => 'office_description',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Email Address',
+            'id'    => 'office_email_address',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Phone Number',
+            'id'    => 'office_phone_number',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Mobile Phone Number',
+            'id'    => 'office_mobile_phone_number',
+        ],
+        // Office.Address
+        [
+            'type'  => 'text',
+            'label' => 'Office Address Street',
+            'id'    => 'office_address_street',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'House Number',
+            'id'    => 'office_address_house_number',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'House Number Suffix',
+            'id'    => 'office_address_house_number_suffix',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Zipcode',
+            'id'    => 'office_address_zip_code',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'City',
+            'id'    => 'office_address_city',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Country',
+            'id'    => 'office_address_country',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Region',
+            'id'    => 'office_address_region',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Latitude',
+            'id'    => 'office_address_latitude',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Longitude',
+            'id'    => 'office_address_longitude',
+        ],
+        //Employer
+        [
+            'type'  => 'text',
+            'label' => 'Employer ID',
+            'id'    => 'employer_id',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Remote Id',
+            'id'    => 'employer_remote_id',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Email Address',
+            'id'    => 'employer_email_address',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Phone Number',
+            'id'    => 'employer_phone_number',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Mobile Phone Number',
+            'id'    => 'employer_mobile_phone_number',
+        ],
+        //Employer.Address
+        [
+            'type'  => 'text',
+            'label' => 'Employer Street',
+            'id'    => 'employer_address_street',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'House Number',
+            'id'    => 'employer_address_house_number',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'House Number Suffix',
+            'id'    => 'employer_address_house_number_suffix',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Zip Code',
+            'id'    => 'employer_address_zip_code',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'City',
+            'id'    => 'employer_address_city',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Country',
+            'id'    => 'employer_address_country',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Region',
+            'id'    => 'employer_address_region',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Latitude',
+            'id'    => 'employer_address_latitude',
+        ],
+        [
+            'type'  => 'text',
+            'label' => 'Latitude',
+            'id'    => 'employer_address_longitude',
         ],
     ];
 
-    return $meta_boxes;
+    public function __construct() {
+        // custom post type
+        add_action('init', [$this, 'rcn_custom_post_type']);
+        add_action('add_meta_boxes', [$this, 'add_meta_boxes']);
+        add_action('save_post', [$this, 'save_fields']);
+    }
+
+    public function rcn_custom_post_type() {
+        $labels = array(
+            'name' => 'Vacancies',
+            'singular_name' => 'Vacancy',
+            'add_new' => 'Add New Vacancy',
+            'add_new_item' => 'Add New Vacancy',
+            'edit_item' => 'Edit Vacancy',
+            'new_item' => 'New Vacancy',
+            'all_items' => 'All Vacancies',
+            'view_item' => 'View Vacancy',
+            'search_items' => 'Search Vacancies',
+            'not_found' => 'No Vacancies found',
+            'not_found_in_trash' => 'No Vacancies found in Trash',
+            'parent_item_colon' => '',
+            'menu_name' => 'Vacancies'
+        );
+        $args = array(
+            'labels' => $labels,
+            'description' => 'Holds our Vacancies and Vacancy specific data',
+            'public' => true,
+            'menu_position' => 5,
+            'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'),
+            'has_archive' => true,
+            'rewrite' => array('slug' => 'vacancies'),
+            'show_in_rest' => true,
+            'rest_base' => 'vacancies',
+            'rest_controller_class' => 'WP_REST_Posts_Controller',
+        );
+        register_post_type('vacancies', $args);
+    }
+
+    public function add_meta_boxes() {
+        foreach ($this->screen as $single_screen) {
+            add_meta_box(
+                'new',
+                __('Vacancies Data', 'recruit-now'),
+                array($this, 'meta_box_callback'),
+                $single_screen,
+                'normal',
+                'default'
+            );
+        }
+    }
+
+    public function meta_box_callback($post) {
+        wp_nonce_field('rnc_v_data', 'rcn_v_nonce');
+        $this->field_generator($post);
+    }
+    public function field_generator($post) {
+        $output = '';
+        foreach ($this->meta_fields as $meta_field) {
+            $label = '<label for="' . $this->prefix . $meta_field['id'] . '">' . $meta_field['label'] . '</label>';
+            $meta_value = get_post_meta($post->ID, $this->prefix . $meta_field['id'], true);
+
+
+            if (empty($meta_value)) {
+                if (isset($meta_field['default'])) {
+                    $meta_value = $meta_field['default'];
+                }
+            }
+            switch ($meta_field['type']) {
+                case 'checkbox':
+                    $input = sprintf(
+                        '<input %s id=" %s" name="%s" type="checkbox" value="1">',
+                        $meta_value === '1' ? 'checked' : '',
+                        $this->prefix . $meta_field['id'],
+                        $this->prefix . $meta_field['id']
+                    );
+                    break;
+
+                case 'textarea':
+                    $input = sprintf(
+                        '<textarea style="%s" id="%s" name="%s" rows="5">%s</textarea>',
+                        'width: 100%',
+                        $this->prefix . $meta_field['id'],
+                        $this->prefix . $meta_field['id'],
+                        $meta_value
+                    );
+                    break;
+
+                default:
+                    $input = sprintf(
+                        '<input %s id="%s" name="%s" type="%s" value="%s">',
+                        $meta_field['type'] !== 'color' ? 'style="width: 100%"' : '',
+                        $this->prefix . $meta_field['id'],
+                        $this->prefix . $meta_field['id'],
+                        $meta_field['type'],
+                        $meta_value
+                    );
+            }
+            $output .= $this->format_rows($label, $input);
+        }
+        echo '<table class="form-table"><tbody>' . $output . '</tbody></table>';
+    }
+
+    public function format_rows($label, $input) {
+        return '<tr><th>' . $label . '</th><td>' . $input . '</td></tr>';
+    }
+
+    public function save_fields($post_id) {
+        if (!isset($_POST['rcn_v_nonce']))
+            return $post_id;
+        $nonce = $_POST['rcn_v_nonce'];
+        if (!wp_verify_nonce($nonce, 'rnc_v_data'))
+            return $post_id;
+        if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
+            return $post_id;
+        foreach ($this->meta_fields as $meta_field) {
+            if (isset($_POST[$this->prefix . $meta_field['id']])) {
+                switch ($meta_field['type']) {
+                    case 'email':
+                        $_POST[$this->prefix . $meta_field['id']] = sanitize_email($_POST[$this->prefix . $meta_field['id']]);
+                        break;
+                    case 'text':
+                        $_POST[$this->prefix . $meta_field['id']] = sanitize_text_field($_POST[$this->prefix . $meta_field['id']]);
+                        break;
+                    case 'textarea':
+                        $_POST[$this->prefix . $meta_field['id']] = sanitize_text_field($_POST[$this->prefix . $meta_field['id']]);
+                        break;
+                    case 'number':
+                        $_POST[$this->prefix . $meta_field['id']] = sanitize_text_field($_POST[$this->prefix . $meta_field['id']]);
+                        break;
+                }
+                update_post_meta($post_id, $this->prefix . $meta_field['id'], $_POST[$this->prefix . $meta_field['id']]);
+            } else if ($meta_field['type'] === 'checkbox') {
+                update_post_meta($post_id, $this->prefix . $meta_field['id'], '0');
+            }
+        }
+    }
 }
+
+if (class_exists('Custom_Meta_box')) {
+    new Custom_Meta_box;
+};
