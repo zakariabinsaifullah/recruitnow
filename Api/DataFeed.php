@@ -194,10 +194,8 @@ function rcn_add_custom_post() {
             // print_r($element['Id']);
             // print_r($element['Title']);
 
-            $post_title =  sanitize_title($element['Title']);
-
             $post = array(
-                'post_title'   => $post_title,
+                'post_title'   => $element['Title'],
                 'post_status'  => 'publish',
                 // 'post_author'  => 1,
                 'post_type'    => 'vacancies'
@@ -207,14 +205,27 @@ function rcn_add_custom_post() {
             /**
              * Insert Post if not exists
              */
-            // $post_id = post_exists($post_title) or wp_insert_post($post);
 
+            $findPostByTitle = $element['Title'];
             $post_id = '';
-            if (post_exists($post_title)) {
-                $post_id = post_exists($post_title) or wp_insert_post($post);
+            if (post_exists($findPostByTitle)) {
+                //post exists!
+                // echo 'exists' . $post_id;
+                $post_id = post_exists($findPostByTitle);
             } else {
+                //post does not exist
+                // echo 'not exists';
                 $post_id = wp_insert_post($post);
             }
+
+
+
+            // $post_id = '';
+            // if (post_exists($post_title)) {
+            //     $post_id = post_exists($post_title);
+            // } else {
+            //     $post_id = post_exists($post_title) or wp_insert_post($post);
+            // }
 
             update_post_meta($post_id, $prefix . 'vacancies_id', $element['Id']);
             update_post_meta($post_id, $prefix . 'remote_id', $element['RemoteId']);
