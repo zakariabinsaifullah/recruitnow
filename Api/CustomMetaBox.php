@@ -33,26 +33,26 @@ class Custom_Meta_Box {
             'label' => 'Reference Number',
             'id'    => 'reference_number',
         ],
-        [
-            'type'  => 'text',
-            'label' => 'Title',
-            'id'    => 'title',
-        ],
+        // [
+        //     'type'  => 'text',
+        //     'label' => 'Title',
+        //     'id'    => 'title',
+        // ],
         [
             'type'  => 'datetime',
             'label' => 'Created At',
             'id'    => 'created_at',
         ],
-        [
-            'type'  => 'date',
-            'label' => 'Last Edited At',
-            'id'    => 'last_edited_at',
-        ],
-        [
-            'type'  => 'date',
-            'label' => 'Publication Date',
-            'id'    => 'publication_date',
-        ],
+        // [
+        //     'type'  => 'date',
+        //     'label' => 'Last Edited At',
+        //     'id'    => 'last_edited_at',
+        // ],
+        // [
+        //     'type'  => 'date',
+        //     'label' => 'Publication Date',
+        //     'id'    => 'publication_date',
+        // ],
         [
             'type'  => 'date',
             'label' => 'Expiration Date',
@@ -268,6 +268,11 @@ class Custom_Meta_Box {
         ],
         [
             'type'  => 'text',
+            'label' => 'Last Name',
+            'id'    => 'recruiter_last_name',
+        ],
+        [
+            'type'  => 'text',
             'label' => 'Email Address',
             'id'    => 'recruiter_email_address',
         ],
@@ -288,11 +293,6 @@ class Custom_Meta_Box {
         [
             'type'  => 'text',
             'label' => 'Office Id',
-            'id'    => 'office_id',
-        ],
-        [
-            'type'  => 'text',
-            'label' => 'Id',
             'id'    => 'office_id',
         ],
         [
