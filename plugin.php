@@ -23,6 +23,7 @@ require_once(plugin_dir_path(__FILE__) . 'admin/admin.php');
 require_once(plugin_dir_path(__FILE__) . 'Api/CustomMetaBox.php');
 require_once(plugin_dir_path(__FILE__) . 'Api/DataFeed.php');
 require_once(plugin_dir_path(__FILE__) . 'Api/ShortCode.php');
+require_once(plugin_dir_path(__FILE__) . 'Api/RenderTemplates.php');
 
 /**
  * Blocks Final Class
@@ -75,6 +76,7 @@ final class RCN_BLOCKS_CLASS {
 		define('RCN_VERSION', '1.0.0');
 		define('RCN_URL', plugin_dir_url(__FILE__));
 		define('RCN_INC_URL', RCN_URL . 'includes/');
+		define('RCN_PATH', __DIR__);
 	}
 
 	/**
