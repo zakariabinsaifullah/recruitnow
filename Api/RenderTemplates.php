@@ -6,19 +6,20 @@
  */
 
 class Render_Templates {
+
     function __construct() {
-        add_filter('archive_template', [$this, 'get_vacancies_archive_template']);
-        add_filter('single_template', [$this, 'get_vacancies_single_template']);
+        add_filter('archive_template', [$this, 'render_vacancies_archive_template']);
+        add_filter('single_template', [$this, 'render_vacancies_single_template']);
     }
 
-    public function get_vacancies_archive_template($archive_template) {
+    public function render_vacancies_archive_template($archive_template) {
         if (is_post_type_archive('vacancies')) {
             $archive_template = RCN_PATH . '/templates/vacancies-archive.php';
         }
         return $archive_template;
     }
 
-    public function get_vacancies_single_template($single_template) {
+    public function render_vacancies_single_template($single_template) {
         global $post;
 
         if ('vacancies' === $post->post_type) {
