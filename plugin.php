@@ -263,7 +263,7 @@ final class RCN_BLOCKS_CLASS {
 	 * Admin Enqueue Scripts
 	 */
 	public function rcn_admin_enqueue_scripts($screen) {
-		if ('toplevel_page_recruit_now' === $screen || 'recruit-now_page_recruit_now_vacancies' === $screen) {
+		if ('toplevel_page_recruit_now' === $screen || 'recruit-now_page_recruit_now_vacancies' === $screen || 'post-new.php' === $screen || 'post.php' === $screen) {
 
 			wp_enqueue_style('rcn-admin-styles', plugin_dir_url(__FILE__) . 'admin/css/admin.css', array(), '1.0.0', 'all');
 		}
@@ -286,9 +286,6 @@ final class RCN_BLOCKS_CLASS {
 				)
 			);
 		}
-
-
-
 
 		// // Application Form Widget
 		// wp_enqueue_script( 'rcn-application-widget', $this->rcn_settings['rcn_application_widget_url'] . '/scripts/jobboard-application-form-v2.js', array(), RCN_VERSION, true );

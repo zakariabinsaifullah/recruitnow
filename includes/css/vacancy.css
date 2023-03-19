@@ -1,3 +1,17 @@
+
+/* 
+Meta Field
+*/
+h3.fields-heading {
+    font-size: 1em;
+    background: #e6e6e6;
+    padding: 10px;
+    margin-left: -10px;
+    border-radius: 2px;
+    color: #000;
+}
+
+/* Other Style */
 .recruit-single-grid {
     display: grid;
     grid-template-columns: 1fr 2fr;

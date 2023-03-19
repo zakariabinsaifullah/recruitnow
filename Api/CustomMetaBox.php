@@ -14,10 +14,10 @@ class Custom_Meta_Box {
     public $prefix = 'recruit_now_';
 
     private $meta_fields = [
-        // [
-        //     'type' => 'heading',
-        //     'label' => '',
-        // ],
+        [
+            'type' => 'heading',
+            'label' => 'Heading'
+        ],
         [
             'type'  => 'text',
             'label' => 'Vacancies ID',
@@ -509,9 +509,10 @@ class Custom_Meta_Box {
     public function field_generator($post) {
         $output = '';
         foreach ($this->meta_fields as $meta_field) {
-            $label = '<label for="' . $this->prefix . $meta_field['id'] . '">' . $meta_field['label'] . '</label>';
-            $meta_value = get_post_meta($post->ID, $this->prefix . $meta_field['id'], true);
-
+            $meta_id = isset($meta_field['id']) ? $meta_field['id'] : '';
+            $meta_type = isset($meta_field['type']) ? $meta_field['type'] : '';
+            $label = '<label for="' . $this->prefix . $meta_id . '">' . $meta_field['label'] . '</label>';
+            $meta_value = get_post_meta($post->ID, $this->prefix . $meta_id , true);
 
             if (empty($meta_value)) {
                 if (isset($meta_field['default'])) {
@@ -523,8 +524,8 @@ class Custom_Meta_Box {
                     $input = sprintf(
                         '<input %s id=" %s" name="%s" type="checkbox" value="1">',
                         $meta_value === '1' ? 'checked' : '',
-                        $this->prefix . $meta_field['id'],
-                        $this->prefix . $meta_field['id']
+                        $this->prefix . $meta_id,
+                        $this->prefix . $meta_id
                     );
                     break;
 
@@ -532,9 +533,16 @@ class Custom_Meta_Box {
                     $input = sprintf(
                         '<textarea style="%s" id="%s" name="%s" rows="5">%s</textarea>',
                         'width: 100%',
-                        $this->prefix . $meta_field['id'],
-                        $this->prefix . $meta_field['id'],
+                        $this->prefix . $meta_id,
+                        $this->prefix . $meta_id,
                         $meta_value
+                    );
+                    break;
+
+                case 'heading':
+                    $input = sprintf(
+                        '<h3 class="fields-heading">%s</h3>',
+                        $meta_field['label']
                     );
                     break;
 
@@ -542,19 +550,23 @@ class Custom_Meta_Box {
                     $input = sprintf(
                         '<input %s id="%s" name="%s" type="%s" value="%s">',
                         $meta_field['type'] !== 'color' ? 'style="width: 100%"' : '',
-                        $this->prefix . $meta_field['id'],
-                        $this->prefix . $meta_field['id'],
+                        $this->prefix . $meta_id,
+                        $this->prefix . $meta_id,
                         $meta_field['type'],
                         $meta_value
                     );
             }
-            $output .= $this->format_rows($label, $input);
+            $output .= $this->format_rows($label, $input, $meta_type );
         }
         echo '<table class="form-table"><tbody>' . $output . '</tbody></table>';
     }
 
-    public function format_rows($label, $input) {
-        return '<tr><th>' . $label . '</th><td>' . $input . '</td></tr>';
+    public function format_rows($label, $input, $meta_type ) {
+        if( $meta_type == 'heading' ) {
+            return '<tr><td colspan="2">' . $input . '</td></tr>';
+        } else {
+            return '<tr><th>' . $label . '</th><td>' . $input . '</td></tr>';
+        }
     }
 
     public function save_fields($post_id) {
