@@ -54,7 +54,7 @@ class Custom_Meta_Box {
         //     'id'    => 'publication_date',
         // ],
         [
-            'type'  => 'date',
+            'type'  => 'datetime',
             'label' => 'Expiration Date',
             'id'    => 'expiration_date',
         ],

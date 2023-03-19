@@ -11,25 +11,10 @@ get_header(); ?>
             // Start the Loop.
             while (have_posts()) : the_post();
                 $post_id = get_the_ID();
-            ?>
-                <div class="single-page-post-heading">
-                    <h1><?php the_title(); ?></h1>
-                </div>
-                <div class="meta">
-                    <span class="remote-id">Function Description - <?php echo wp_kses_post(get_post_meta($post_id, 'recruit_now_function_description', true)); ?></span>
-                    <span class="date"><?php echo get_the_date(); ?></span>
-                </div>
 
-                <?php
-
-                $postmetas = get_post_meta(get_the_ID());
-                // var_dump($postmetas);
-
+                $postmetas = get_post_meta($post_id, '', true);
+                $data = $postmetas;
                 $rcn_settings = get_option('rcn_settings');
-                $rcn_feed_data = rcn_feed_output();
-                ob_start();
-                $key = array_search($id, array_column($rcn_feed_data, 'Id'));
-                $data = $rcn_feed_data[$key];
 
                 // api base url
                 $apiBaseUrl = isset($rcn_settings['rcn_application_widget_url']) ? $rcn_settings['rcn_application_widget_url'] : 'https://roteck.recruitnowcockpit.nl/jobsite';
@@ -43,46 +28,42 @@ get_header(); ?>
                 $error = get_permalink($rcn_settings['rcn_error_page_application_form']);
 
                 $btn_text = isset($rcn_settings['rcn_application_form_button_text']) ? $rcn_settings['rcn_application_form_button_text'] : 'Apply Now';
-                ?>
+            ?>
                 <div class="recruit-single-grid">
                     <div class="job-board-application-form">
-                        <jobboard-application-form title-prefix="" form-id="<?php echo $applicationFormId; ?>" vacancy-id="<?php echo $data['Id']; ?>" api-base-url="<?php echo $apiBaseUrl; ?>" success="window.location.href = '/<?php echo $thankyou; ?>'" fail="window.location.href = '/<?php echo $error; ?>'" apply-btn-text="<?php echo $btn_text; ?>" utm-tags="utm_source=facebook&utm_medium=social" tracking-fields="customfields1=waarde1&customfields2=waarde2" referrer="https://url.vanherkomst.nl">
+                        <jobboard-application-form title-prefix="" form-id="<?php echo $applicationFormId; ?>" vacancy-id="<?php echo $data['recruit_now_vacancies_id'][0]; ?>" api-base-url="<?php echo $apiBaseUrl; ?>" success="window.location.href = '/<?php echo $thankyou; ?>'" fail="window.location.href = '/<?php echo $error; ?>'" apply-btn-text="<?php echo $btn_text; ?>" utm-tags="utm_source=facebook&utm_medium=social" tracking-fields="customfields1=waarde1&customfields2=waarde2" referrer="https://url.vanherkomst.nl">
                         </jobboard-application-form>
                     </div>
                     <div class="vacancy-content">
                         <table border="1" cellpadding="8" cellspacing="0">
                             <tr>
                             <tr>
+                                <td><?php esc_html_e('Title', 'recruitnow'); ?> </td>
+                                <td><?php echo wp_kses_post(get_the_title()); ?></td>
+                            </tr>
+                            <tr>
                                 <td><?php esc_html_e('Id', 'recruitnow'); ?> </td>
-                                <td><?php echo wp_kses_post($data['Id']); ?></td>
+                                <td><?php echo wp_kses_post($data['recruit_now_vacancies_id'][0]); ?></td>
                             </tr>
                             <tr>
                                 <td><?php esc_html_e('RemoteId', 'recruitnow'); ?> </td>
-                                <td><?php echo wp_kses_post($data['RemoteId']); ?></td>
+                                <td><?php echo wp_kses_post($data['recruit_now_remote_id'][0]); ?></td>
                             </tr>
                             <tr>
                                 <td><?php esc_html_e('ReferenceNumber', 'recruitnow'); ?> </td>
-                                <td><?php echo wp_kses_post($data['ReferenceNumber']); ?></td>
-                            </tr>
-                            <tr>
-                                <td><?php esc_html_e('Title', 'recruitnow'); ?> </td>
-                                <td><?php echo wp_kses_post($data['Title']); ?></td>
+                                <td><?php echo wp_kses_post($data['recruit_now_reference_number'][0]); ?></td>
                             </tr>
                             <tr>
                                 <td><?php esc_html_e('CreatedAt', 'recruitnow'); ?></td>
-                                <td><?php echo wp_kses_post($data['CreatedAt']); ?></td>
-                            </tr>
-                            <tr>
-                                <td><?php esc_html_e('LastEditedAt', 'recruitnow'); ?></td>
-                                <td><?php echo wp_kses_post($data['LastEditedAt']); ?></td>
+                                <td><?php echo wp_kses_post(get_the_date()); ?></td>
                             </tr>
                             <tr>
                                 <td><?php esc_html_e('PublicationDate', 'recruitnow'); ?></td>
-                                <td><?php echo wp_kses_post($data['PublicationDate']); ?></td>
+                                <td><?php echo get_the_date('Y-m-d'); ?></td>
                             </tr>
                             <tr>
                                 <td><?php esc_html_e('ExpirationDate', 'recruitnow'); ?></td>
-                                <td><?php echo wp_kses_post($data['ExpirationDate']); ?></td>
+                                <td><?php echo wp_kses_post($data['recruit_now_expiration_date'][0]); ?></td>
                             </tr>
                             </tr>
                         </table>
@@ -95,31 +76,31 @@ get_header(); ?>
                             </tr>
                             <tr>
                                 <td><?php esc_html_e('Summary', 'recruitnow'); ?></td>
-                                <td><?php echo wp_kses_post($data['Descriptions']['Summary']); ?></td>
+                                <td><?php echo wp_kses_post($data['recruit_now_summary'][0]); ?></td>
                             </tr>
                             <tr>
                                 <td><?php esc_html_e('FunctionDescription', 'recruitnow'); ?></td>
-                                <td><?php echo wp_kses_post($data['Descriptions']['FunctionDescription']); ?></td>
+                                <td><?php echo wp_kses_post($data['recruit_now_function_description'][0]); ?></td>
                             </tr>
                             <tr>
                                 <td><?php esc_html_e('ClientDescription', 'recruitnow'); ?></td>
-                                <td><?php echo wp_kses_post($data['Descriptions']['ClientDescription']); ?></td>
+                                <td><?php echo wp_kses_post($data['recruit_now_client_description'][0]); ?></td>
                             </tr>
                             <tr>
                                 <td><?php esc_html_e('RequirementsDescription', 'recruitnow'); ?></td>
-                                <td><?php echo wp_kses_post($data['Descriptions']['RequirementsDescription']); ?></td>
+                                <td><?php echo wp_kses_post($data['recruit_now_requirements_description'][0]); ?></td>
                             </tr>
                             <tr>
                                 <td><?php esc_html_e('OfferDescription', 'recruitnow'); ?></td>
-                                <td><?php echo wp_kses_post($data['Descriptions']['OfferDescription']); ?></td>
+                                <td><?php echo wp_kses_post($data['recruit_now_offer_description'][0]); ?></td>
                             </tr>
                             <tr>
                                 <td><?php esc_html_e('AdditionalDescription', 'recruitnow'); ?></td>
-                                <td><?php echo wp_kses_post($data['Descriptions']['AdditionalDescription']); ?></td>
+                                <td><?php echo wp_kses_post($data['recruit_now_additional_description'][0]); ?></td>
                             </tr>
                             <tr>
                                 <td><?php esc_html_e('ApplicationProcedureDescription', 'recruitnow'); ?></td>
-                                <td><?php echo wp_kses_post($data['Descriptions']['ApplicationProcedureDescription']); ?></td>
+                                <td><?php echo wp_kses_post($data['recruit_now_application_procedure_description'][0]); ?></td>
                             </tr>
                             </tr>
                         </table>
@@ -134,7 +115,7 @@ get_header(); ?>
                                 <td><?php esc_html_e('Regions', 'recruitnow'); ?></td>
                                 <td>
                                     <?php
-                                    $regions = $data['Facets']['Regions'];
+                                    $regions = $data['recruit_now_regions'][0];
                                     if (!empty($regions)) :
                                         foreach ($regions as $region) :
                                     ?>
@@ -170,7 +151,7 @@ get_header(); ?>
                                 <td><?php esc_html_e('FunctionTypes', 'recruitnow'); ?></td>
                                 <td>
                                     <?php
-                                    $functionTypes = $data['Facets']['FunctionTypes'];
+                                    $functionTypes = $data['recruit_now_function_types'][0];
                                     if (!empty($functionTypes)) :
                                         foreach ($functionTypes as $functionType) :
                                     ?>
@@ -206,7 +187,7 @@ get_header(); ?>
                                 <td><?php esc_html_e('ContractTypes', 'recruitnow'); ?></td>
                                 <td>
                                     <?php
-                                    $contractTypes = $data['Facets']['ContractTypes'];
+                                    $contractTypes = $data['recruit_now_contract_types'][0];
                                     if (!empty($contractTypes)) :
                                         foreach ($contractTypes as $contractType) :
                                     ?>
@@ -242,7 +223,7 @@ get_header(); ?>
                                 <td><?php esc_html_e('ExperienceLevels', 'recruitnow'); ?></td>
                                 <td>
                                     <?php
-                                    $experienceLevels = $data['Facets']['ExperienceLevels'];
+                                    $experienceLevels = $data['recruit_now_experience_levels'][0];
                                     if (!empty($experienceLevels)) :
                                         foreach ($experienceLevels as $experienceLevel) :
                                     ?>
@@ -278,7 +259,7 @@ get_header(); ?>
                                 <td><?php esc_html_e('EducationLevels', 'recruitnow'); ?></td>
                                 <td>
                                     <?php
-                                    $educationLevels = $data['Facets']['EducationLevels'];
+                                    $educationLevels = $data['recruit_now_experience_levels'][0];
                                     if (!empty($educationLevels)) :
                                         foreach ($educationLevels as $educationLevel) :
                                     ?>
@@ -314,7 +295,7 @@ get_header(); ?>
                                 <td><?php esc_html_e('Categories', 'recruitnow'); ?></td>
                                 <td>
                                     <?php
-                                    $categories = $data['Facets']['Categories'];
+                                    $categories = $data['recruit_now_categories'][0];
                                     if (!empty($categories)) :
                                         foreach ($categories as $category) :
                                     ?>
@@ -350,7 +331,7 @@ get_header(); ?>
                                 <td><?php esc_html_e('HoursPerWeek', 'recruitnow'); ?></td>
                                 <td>
                                     <?php
-                                    $hoursPerWeek = $data['Facets']['HoursPerWeek'];
+                                    $hoursPerWeek = $data['recruit_now_hours_per_week'][0];
                                     if (!empty($hoursPerWeek)) :
                                         foreach ($hoursPerWeek as $hourPerWeek) :
                                     ?>
@@ -395,7 +376,7 @@ get_header(); ?>
                                 <td><?php esc_html_e('MaxAllowedApplications', 'recruitnow'); ?></td>
                                 <td>
                                     <?php
-                                    echo isset($data['Application']['MaxAllowedApplications']) ? $data['Application']['MaxAllowedApplications'] : __('Not Available',);
+                                    echo isset($data['recruit_now_max_allowed_applications'][0]) ? $data['recruit_now_max_allowed_applications'][0] : __('Not Available',);
                                     ?>
                                 </td>
                             </tr>
@@ -403,7 +384,7 @@ get_header(); ?>
                                 <td><?php esc_html_e('RemainingApplications', 'recruitnow'); ?></td>
                                 <td>
                                     <?php
-                                    echo isset($data['Application']['RemainingApplications']) ? $data['Application']['RemainingApplications'] : __('Not Available',);
+                                    echo isset($data['recruit_now_remaining_applications'][0]) ? $data['recruit_now_remaining_applications'][0] : __('Not Available',);
                                     ?>
                                 </td>
                             </tr>
@@ -411,7 +392,7 @@ get_header(); ?>
                                 <td><?php esc_html_e('CurriculumVitaeRequired', 'recruitnow'); ?></td>
                                 <td>
                                     <?php
-                                    echo $data['Application']['CurriculumVitaeRequired'] === true ? 'true' : 'false';
+                                    echo $data['recruit_now_curriculum_vitae_required'][0] === true ? 'true' : 'false';
                                     ?>
                                 </td>
                             </tr>
