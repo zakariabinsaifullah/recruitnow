@@ -10,17 +10,20 @@ get_header();
         array(
             'post_type' => 'vacancies',
             'post_status' => 'publish',
-            'posts_per_page' => 1,
+            // 'posts_per_page' => 1,
             'paged' => $paged
         )
     );
+
     ?>
     <div class="posts-section">
         <?php if ($posts_query->have_posts()) { ?>
             <h2><?php echo esc_html__('Latest Vacancies', 'textdomain'); ?></h2>
             <div class="archived-posts">
                 <?php while ($posts_query->have_posts()) {
-                    $posts_query->the_post(); ?>
+                    $posts_query->the_post();
+                    $post_id = get_the_ID();
+                ?>
                     <div class="archive-item">
                         <?php if (has_post_thumbnail(get_the_ID())) { ?>
                             <div class="post-thumbnail">
@@ -32,6 +35,15 @@ get_header();
                         <div class="post-title">
                             <a href="<?php the_permalink(); ?>">
                                 <h3><?php the_title(); ?></h3>
+                            </a>
+                        </div>
+                        <div class="meta">
+                            <span class="remote-id">Function Description - <?php echo wp_kses_post(get_post_meta($post_id, 'recruit_now_function_description', true)); ?></span>
+                            <span class="date"><?php echo get_the_date(); ?></span>
+                        </div>
+                        <div class="post-read_more">
+                            <a href="<?php the_permalink(); ?>">
+                                <?php _e('Read More', 'textdomain'); ?>
                             </a>
                         </div>
                     </div>
@@ -50,6 +62,7 @@ get_header();
                     )); ?>
                 </div>
             <?php }
+
             wp_reset_postdata();
         } else { ?>
             <div class="archived-posts"><?php echo esc_html__('No posts matching the query were found.', 'textdomain'); ?></div>

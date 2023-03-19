@@ -23,7 +23,7 @@ class Render_Templates {
         global $post;
 
         if ('vacancies' === $post->post_type) {
-            $single_template = dirname(__FILE__) . '/templates/vacancies-details.php';
+            $single_template = RCN_PATH . '/templates/vacancies-details.php';
         }
 
         return $single_template;
