@@ -17,56 +17,59 @@ get_header();
 
     ?>
     <div class="posts-section">
-        <?php if ($posts_query->have_posts()) { ?>
-            <h2><?php echo esc_html__('Latest Vacancies', 'textdomain'); ?></h2>
-            <div class="archived-posts">
-                <?php while ($posts_query->have_posts()) {
-                    $posts_query->the_post();
-                    $post_id = get_the_ID();
-                ?>
-                    <div class="archive-item">
-                        <?php if (has_post_thumbnail(get_the_ID())) { ?>
-                            <div class="post-thumbnail">
-                                <a href="<?php the_permalink(); ?>">
-                                    <?php the_post_thumbnail(); ?>
-                                </a>
-                            </div>
-                        <?php } ?>
-                        <div class="post-title">
-                            <a href="<?php the_permalink(); ?>">
-                                <h3><?php the_title(); ?></h3>
-                            </a>
-                        </div>
-                        <div class="meta">
-                            <span class="remote-id">Function Description - <?php echo wp_kses_post(get_post_meta($post_id, 'recruit_now_function_description', true)); ?></span>
-                            <span class="date"><?php echo get_the_date(); ?></span>
-                        </div>
-                        <div class="post-read_more">
-                            <a href="<?php the_permalink(); ?>">
-                                <?php _e('Read More', 'textdomain'); ?>
-                            </a>
-                        </div>
-                    </div>
-                <?php } ?>
-            </div>
-            <?php
-            $total_pages = $posts_query->max_num_pages;
-            if ($total_pages > 1) {
-                $current_page = max(1, get_query_var('paged')); ?>
-                <div class="archive-pagination">
-                    <?php echo paginate_links(array(
-                        'base' => get_pagenum_link(1) . '%_%',
-                        'format' => 'page/%#%',
-                        'current' => $current_page,
-                        'total' => $total_pages
-                    )); ?>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    Left Filter Bar
                 </div>
-            <?php }
+                <div class="col-md-9">
+                    <?php if ($posts_query->have_posts()) { ?>
+                        <?php while ($posts_query->have_posts()) {
+                            $posts_query->the_post();
+                            $post_id = get_the_ID();
+                        ?>
+                            <article class="card mb-3 p-4">
+                                <a href="<?php the_permalink(); ?>" class="main-wrapper text-normal row p-4">
 
-            wp_reset_postdata();
-        } else { ?>
-            <div class="archived-posts"><?php echo esc_html__('No posts matching the query were found.', 'textdomain'); ?></div>
-        <?php } ?>
+                                    <div class="content col-md-8">
+
+                                        <h2 class="h5"><?php the_title(); ?></h2>
+
+                                        <span class="badge badge-secondary">Uitzenden</span>
+                                        <span class="small text-muted">
+                                            <span class="mx-2">|</span>
+                                            <i class="lnr lnr-earth mr-2"></i>Nederland, Lekkerkerk </span>
+
+                                    </div>
+
+                                    <div class="cta col-md-4 d-flex align-items-center">
+                                        <div class="btn btn-sm btn-outline-primary ml-auto"> <?php _e('Apply Now', 'textdomain'); ?></div>
+                                    </div>
+
+                                </a>
+                            </article>
+                        <?php } ?>
+                        <?php
+                        $total_pages = $posts_query->max_num_pages;
+                        if ($total_pages > 1) {
+                            $current_page = max(1, get_query_var('paged')); ?>
+                            <div class="pagination">
+                                <?php echo paginate_links(array(
+                                    'base' => get_pagenum_link(1) . '%_%',
+                                    'format' => 'page/%#%',
+                                    'current' => $current_page,
+                                    'total' => $total_pages
+                                )); ?>
+                            </div>
+                        <?php }
+
+                        wp_reset_postdata();
+                    } else { ?>
+                        <div class="archived-posts"><?php echo esc_html__('No posts matching the query were found.', 'textdomain'); ?></div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
     </div>
 </main>
 <?php

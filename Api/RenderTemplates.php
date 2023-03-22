@@ -14,6 +14,7 @@ class Render_Templates {
 
     public function render_vacancies_archive_template($archive_template) {
         if (is_post_type_archive('vacancies')) {
+            wp_enqueue_style('vacancies-archive', RCN_URL . '/assets/css/vacancies-archive.css', '', RCN_VERSION, 'all');
             $archive_template = RCN_PATH . '/templates/vacancies-archive.php';
         }
         return $archive_template;
