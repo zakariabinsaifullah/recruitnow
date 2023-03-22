@@ -7,6 +7,15 @@
     padding-bottom: 30px;
 }
 
+.archive-icon-wrap {
+    font-size: 18px;
+}
+
+.archive-icon-wrap svg {
+    width: 1em;
+    height: 1em;
+}
+
 .posts-section .main-wrapper {
     display: flex;
     justify-content: space-between;

@@ -13,7 +13,6 @@
 add_action('admin_menu', 'rcn_add_admin_menu');
 function rcn_add_admin_menu() {
     add_menu_page(__('Recruit Now', 'recruitnow'), __('Recruit Now', 'recruitnow'), 'manage_options', 'recruit_now', 'rcn_options_page', 'dashicons-screenoptions');
-    add_submenu_page('recruit_now', __('Vacancies', 'recruitnow'), __('Vacancies', 'recruitnow'), 'manage_options', 'recruit_now_vacancies', 'rcn_vacancies_page');
 }
 
 /**
@@ -147,15 +146,6 @@ function rcn_settings_init() {
         'rcn_data_feed_section'
     );
 
-    // Data ShowCase Page
-    add_settings_field(
-        'rcn_data_showcase_page',
-        __('Data Showcase Page', 'recruitnow'),
-        'rcn_data_showcase_page_render',
-        'rcn_page',
-        'rcn_data_feed_section'
-    );
-
     // Data Cache
     add_settings_field(
         'rcn_data_cache',
@@ -254,32 +244,6 @@ function rcn_data_feed_website_render() {
     $rcn_data_feed_website = isset($options['rcn_data_feed_website']) ? $options['rcn_data_feed_website'] : 'https://roteck.recruitnowcockpit.nl/jobsite/api/vacancies/feed/website?type=json';
 ?>
     <input class="rcn_input" type='text' name='rcn_settings[rcn_data_feed_website]' value='<?php echo esc_attr($rcn_data_feed_website); ?>'>
-<?php
-}
-/**
- * @package Recruit Now
- * Showcase Page ID
- */
-function rcn_data_showcase_page_render() {
-    $options = get_option('rcn_settings');
-    $rcn_data_showcase_page = isset($options['rcn_data_showcase_page']) ? $options['rcn_data_showcase_page'] : '';
-?>
-    <select name='rcn_settings[rcn_data_showcase_page]'>
-        <?php
-        $pages = get_pages();
-        foreach ($pages as $page) {
-            $option = '<option value="' . $page->ID . '" ' . selected($rcn_data_showcase_page, $page->ID, false) . '>';
-            $option .= $page->post_title;
-            $option .= '</option>';
-            echo $option;
-        }
-        ?>
-    </select>
-    <div class="recruit-shortcode-note">
-        <?php  
-            echo __('<b>Note: </b> Use this shortcode <b><i>[rcn_job_data]</i></b> on the selected page for data showcase', 'recruitnow')
-        ?>
-    </div>
 <?php
 }
 /**
@@ -416,7 +380,7 @@ function rcn_success_page_cv_generator_render() {
 function rcn_open_application_section_callback() {
 ?>
     <p class="setting-info">
-        <i><?php _e('following settings are related to register application form', 'recruitnow'); ?></i>
+        <i><?php _e('Following settings are related to register application form.', 'recruitnow'); ?></i>
     </p>
 <?php
 }
@@ -429,7 +393,7 @@ function rcn_open_application_section_callback() {
 function rcn_application_widget_section_callback() {
 ?>
     <p class="setting-info">
-        <i><?php _e('following settings are related to jobboard application form widget', 'recruitnow'); ?></i>
+        <i><?php _e('Following settings are related to jobboard application form widget.', 'recruitnow'); ?></i>
     </p>
 <?php
 }
@@ -479,83 +443,5 @@ function rcn_options_page() {
             ?>
         </form>
     </div>
-<?php
-}
-
-/**
- * Show Vacancies
- */
-
-function rcn_vacancies_page() {
-?>
-    <div class="vacancies-page">
-        <div class="plugin-head-vacancies">
-            <h2 class="plugin-title"><?php _e('Vacancies List', 'recruitnow'); ?></h2>
-        </div>
-        <div class="plugin-body">
-        <?php
-            $rcn_feed_data = rcn_feed_output();
-        ?>
-            <table cellpadding="8" cellspacing="0">
-                <tr>
-                    <th>
-                        <?php esc_html_e('No.', 'recruit-now'); ?>
-                    </th>
-                    <th>
-                        <?php esc_html_e('Title', 'recruit-now'); ?>
-                    </th>
-                    <th>
-                        <?php esc_html_e('Summary', 'recruit-now'); ?>
-                    </th>
-                    <th>
-                        <?php esc_html_e('Publish At', 'recruit-now'); ?>
-                    </th>
-                    <th>
-                        <?php esc_html_e('View', 'recruit-now'); ?>
-                    </th>
-                </tr>
-                <?php
-                    $serial = 0;
-                    if ('api_end_point_missing' !== $rcn_feed_data && false !== $rcn_feed_data) :
-                        foreach ($rcn_feed_data as $data) :
-                        $serial++;
-                        $fetch_option = get_option('rcn_settings', false);
-                        $page_id      = isset($fetch_option['rcn_data_showcase_page']) ? $fetch_option['rcn_data_showcase_page'] : "";
-                        $page_link    = get_permalink($page_id);
-                        $id           = $data['Id'];
-                        $url          = $page_link . '?id=' . $id . '&job-title=' . sanitize_title_with_dashes(strtolower($data['Title']));
-
-                ?>
-                    <tr>
-                        <td>
-                            <?php echo $serial; ?>
-                        </td>
-                        <td>
-                            <?php echo wp_kses_post($data['Title']); ?>
-                        </td>
-                        <td>
-                            <?php echo wp_kses_post($data['Descriptions']['Summary']); ?>
-                        </td>
-                        <td>
-                            <?php echo wp_kses_post(
-                                date('d-m-Y', strtotime($data['PublicationDate']))
-                            ); ?>
-                        </td>
-                        <td>
-                            <a href="<?php echo esc_url($url); ?>" target="_blank">
-                                <?php esc_html_e('View', 'recruit-now'); ?>
-                            </a>
-                        </td>
-                    </tr>
-                <?php
-                    endforeach;
-                endif;
-                ?>
-            </table>
-        <?php
-        ?>
-        </div>
-    </div>
-    <div class="clear"></div>
 <?php
 }

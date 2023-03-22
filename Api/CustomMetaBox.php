@@ -475,7 +475,7 @@ class Custom_Meta_Box {
             'description'           => 'Holds our Vacancies and Vacancy specific data',
             'public'                => true,
             'menu_position'         => 5,
-            'supports'              => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'),
+            'supports'              => array('title', 'comments'),
             'has_archive'           => true,
             'rewrite'               => array('slug' => 'vacancies'),
             'show_in_rest'          => true,

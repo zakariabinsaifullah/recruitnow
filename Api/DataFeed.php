@@ -355,24 +355,3 @@ function rcn_feed_refresh() {
     echo wp_json_encode('success');
     wp_die();
 }
-
-
-
-/**
- * Below Backup Data for Testing
- */
-/*
-$rcn_feed_data = rcn_feed_output();
-
-if ('api_end_point_missing' !== $rcn_feed_data && false !== $rcn_feed_data) {
-	// var_dump($rcn_feed_data);
-	foreach ($rcn_feed_data as $element) {
-		// print_r($element);
-		// format publication date to Y-m-d
-		echo date('Y-m-d', strtotime($element['PublicationDate']));
-		// print_r($element['PublicationDate']);
-		// print_r($element['Id']);
-		// print_r($element['Title']);
-	}
-}
-*/

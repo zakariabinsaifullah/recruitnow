@@ -37,7 +37,6 @@ get_header(); ?>
                     <div class="vacancy-content">
                         <table border="1" cellpadding="8" cellspacing="0">
                             <tr>
-                            <tr>
                                 <td><?php esc_html_e('Title', 'recruitnow'); ?> </td>
                                 <td><?php echo wp_kses_post(get_the_title()); ?></td>
                             </tr>
@@ -65,10 +64,8 @@ get_header(); ?>
                                 <td><?php esc_html_e('ExpirationDate', 'recruitnow'); ?></td>
                                 <td><?php echo wp_kses_post($data['recruit_now_expiration_date'][0]); ?></td>
                             </tr>
-                            </tr>
                         </table>
                         <table border="1" cellpadding="8" cellspacing="0">
-                            <tr>
                             <tr>
                                 <th colspan="2">
                                     <?php esc_html_e('Descriptions', 'recruitnow'); ?>
@@ -102,10 +99,8 @@ get_header(); ?>
                                 <td><?php esc_html_e('ApplicationProcedureDescription', 'recruitnow'); ?></td>
                                 <td><?php echo wp_kses_post($data['recruit_now_application_procedure_description'][0]); ?></td>
                             </tr>
-                            </tr>
                         </table>
                         <table border="1" cellpadding="8" cellspacing="0">
-                            <tr>
                             <tr>
                                 <th colspan="2">
                                     <?php esc_html_e('Facets', 'recruitnow'); ?>
@@ -364,10 +359,8 @@ get_header(); ?>
                                     ?>
                                 </td>
                             </tr>
-                            </tr>
                         </table>
                         <table border="1" cellpadding="8" cellspacing="0">
-                            <tr>
                             <tr>
                                 <th colspan="2">
                                     <?php esc_html_e('Application', 'recruitnow'); ?>
@@ -397,6 +390,501 @@ get_header(); ?>
                                     ?>
                                 </td>
                             </tr>
+                        </table>
+                        <table border="1" cellpadding="8" cellspacing="0">
+                            <tr>
+                                <th colspan="2">
+                                    <?php esc_html_e('Employment', 'recruitnow'); ?>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Hours Per Week Min', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_hours_perweek_min'][0]) ? $data['recruit_now_hours_perweek_min'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Hours Per Week Max', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_hours_per_week_max'][0]) ? $data['recruit_now_hours_per_week_max'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Shift Service', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo $data['recruit_now_shift_service'][0] === true ? 'Yes' : 'No';
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Travel Distance', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_travel_distance'][0]) ? $data['recruit_now_travel_distance'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                        </table>
+                        <table border="1" cellpadding="8" cellspacing="0">
+                            <tr>
+                                <th colspan="2">
+                                    <?php esc_html_e('Work Location', 'recruitnow'); ?>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Street', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_street'][0]) ? $data['recruit_now_street'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('House number', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_house_number'][0]) ? $data['recruit_now_house_number'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('House number Suffix', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_house_nmber_suffix'][0]) ? $data['recruit_now_house_nmber_suffix'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Zipcode', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_zip_code'][0]) ? $data['recruit_now_zip_code'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('City', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_city'][0]) ? $data['recruit_now_city'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Country', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_country'][0]) ? $data['recruit_now_country'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Region', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_region'][0]) ? $data['recruit_now_region'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Latitude', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_latitude'][0]) ? $data['recruit_now_latitude'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Longitude', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_longitude'][0]) ? $data['recruit_now_longitude'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                        </table>
+                        <table border="1" cellpadding="8" cellspacing="0">
+                            <tr>
+                                <th colspan="2">
+                                    <?php esc_html_e('Salary', 'recruitnow'); ?>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Salary Min', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_salary_min'][0]) ? $data['recruit_now_salary_min'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Salary Max', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_salary_max'][0]) ? $data['recruit_now_salary_max'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Description', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_salary_description'][0]) ? $data['recruit_now_salary_description'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                        </table>
+                        <table border="1" cellpadding="8" cellspacing="0">
+                            <tr>
+                                <th colspan="2">
+                                    <?php esc_html_e('Recruiter', 'recruitnow'); ?>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Id', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_recruiter_id'][0]) ? $data['recruit_now_recruiter_id'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Remote Id', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_recruiter_remote_id'][0]) ? $data['recruit_now_recruiter_remote_id'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('FirstName', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_recruiter_first_name'][0]) ? $data['recruit_now_recruiter_first_name'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('MiddleName', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_recruiter_middle_name'][0]) ? $data['recruit_now_recruiter_middle_name'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('LastName', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_recruiter_last_name'][0]) ? $data['recruit_now_recruiter_last_name'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('EmailAddress', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_recruiter_email_address'][0]) ? $data['recruit_now_recruiter_email_address'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('PhoneNumber', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_recruiter_phone_number'][0]) ? $data['recruit_now_recruiter_phone_number'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('MobilePhoneNumber', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_recruiter_mobile_phone_number'][0]) ? $data['recruit_now_recruiter_mobile_phone_number'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                        </table>
+                        <table border="1" cellpadding="8" cellspacing="0">
+                            <tr>
+                                <th colspan="2">
+                                    <?php esc_html_e('Office', 'recruitnow'); ?>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Id', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_office_id'][0]) ? $data['recruit_now_office_id'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Remote Id', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_office_remote_id'][0]) ? $data['recruit_now_office_remote_id'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Name', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_office_name'][0]) ? $data['recruit_now_office_name'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Summary', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_office_summary'][0]) ? $data['recruit_now_office_summary'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Description', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_office_description'][0]) ? $data['recruit_now_office_description'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('EmailAddress', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_office_email_address'][0]) ? $data['recruit_now_office_email_address'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Phone Number', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_office_phone_number'][0]) ? $data['recruit_now_office_phone_number'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Mobile Phone Number', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_office_mobile_phone_number'][0]) ? $data['recruit_now_office_mobile_phone_number'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                        </table>
+                        <table border="1" cellpadding="8" cellspacing="0">
+                            <tr>
+                                <th colspan="2">
+                                    <?php esc_html_e('Office Address', 'recruitnow'); ?>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Street', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_office_address_street'][0]) ? $data['recruit_now_office_address_street'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('House number', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_office_address_house_number'][0]) ? $data['recruit_now_office_address_house_number'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('House number Suffix', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_office_address_house_number_suffix'][0]) ? $data['recruit_now_office_address_house_number_suffix'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Zipcode', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_office_address_zip_code'][0]) ? $data['recruit_now_office_address_zip_code'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('City', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_office_address_city'][0]) ? $data['recruit_now_office_address_city'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Country', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_office_address_country'][0]) ? $data['recruit_now_office_address_country'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Region', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_office_address_region'][0]) ? $data['recruit_now_office_address_region'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Latitude', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_office_address_latitude'][0]) ? $data['recruit_now_office_address_latitude'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Longitude', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_office_address_longitude'][0]) ? $data['recruit_now_office_address_longitude'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                        </table>
+                        <table border="1" cellpadding="8" cellspacing="0">
+                            <tr>
+                                <th colspan="2">
+                                    <?php esc_html_e('Employer', 'recruitnow'); ?>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Id', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_employer_id'][0]) ? $data['recruit_now_employer_id'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Remote Id', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_employer_remote_id'][0]) ? $data['recruit_now_employer_remote_id'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Email Address', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_employer_email_address'][0]) ? $data['recruit_now_employer_email_address'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Phone Number', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_employer_phone_number'][0]) ? $data['recruit_now_employer_phone_number'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Mobile Phone Number', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_employer_mobile_phone_number'][0]) ? $data['recruit_now_employer_mobile_phone_number'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                        </table>
+                        <table border="1" cellpadding="8" cellspacing="0">
+                            <tr>
+                                <th colspan="2">
+                                    <?php esc_html_e('Employer Address', 'recruitnow'); ?>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Street', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_employer_address_street'][0]) ? $data['recruit_now_employer_address_street'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('House number', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_employer_address_house_number'][0]) ? $data['recruit_now_employer_address_house_number'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('House number Suffix', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_employer_address_house_number_suffix'][0]) ? $data['recruit_now_employer_address_house_number_suffix'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Zipcode', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_employer_address_zip_code'][0]) ? $data['recruit_now_employer_address_zip_code'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('City', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_employer_address_city'][0]) ? $data['recruit_now_employer_address_city'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Country', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_employer_address_country'][0]) ? $data['recruit_now_employer_address_country'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Region', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_employer_address_region'][0]) ? $data['recruit_now_employer_address_region'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Latitude', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_employer_address_latitude'][0]) ? $data['recruit_now_employer_address_latitude'][0] : __('Not Available',);
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php esc_html_e('Longitude', 'recruitnow'); ?></td>
+                                <td>
+                                    <?php
+                                    echo isset($data['recruit_now_employer_address_longitude'][0]) ? $data['recruit_now_employer_address_longitude'][0] : __('Not Available',);
+                                    ?>
+                                </td>
                             </tr>
                         </table>
                     </div>
