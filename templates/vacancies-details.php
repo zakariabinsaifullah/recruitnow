@@ -115,7 +115,7 @@ get_header(); ?>
                                 <td><?php esc_html_e('Regions', 'recruitnow'); ?></td>
                                 <td>
                                     <?php
-                                    $regions = $data['recruit_now_regions'][0];
+                                    $regions = unserialize($data['recruit_now_regions'][0]);
                                     if (!empty($regions)) :
                                         foreach ($regions as $region) :
                                     ?>
@@ -151,7 +151,8 @@ get_header(); ?>
                                 <td><?php esc_html_e('FunctionTypes', 'recruitnow'); ?></td>
                                 <td>
                                     <?php
-                                    $functionTypes = $data['recruit_now_function_types'][0];
+                                    $functionTypes = unserialize($data['recruit_now_function_types'][0]);
+
                                     if (!empty($functionTypes)) :
                                         foreach ($functionTypes as $functionType) :
                                     ?>
@@ -187,7 +188,7 @@ get_header(); ?>
                                 <td><?php esc_html_e('ContractTypes', 'recruitnow'); ?></td>
                                 <td>
                                     <?php
-                                    $contractTypes = $data['recruit_now_contract_types'][0];
+                                    $contractTypes = unserialize($data['recruit_now_contract_types'][0]);
                                     if (!empty($contractTypes)) :
                                         foreach ($contractTypes as $contractType) :
                                     ?>
@@ -223,7 +224,7 @@ get_header(); ?>
                                 <td><?php esc_html_e('ExperienceLevels', 'recruitnow'); ?></td>
                                 <td>
                                     <?php
-                                    $experienceLevels = $data['recruit_now_experience_levels'][0];
+                                    $experienceLevels = unserialize($data['recruit_now_experience_levels'][0]);
                                     if (!empty($experienceLevels)) :
                                         foreach ($experienceLevels as $experienceLevel) :
                                     ?>
@@ -259,7 +260,7 @@ get_header(); ?>
                                 <td><?php esc_html_e('EducationLevels', 'recruitnow'); ?></td>
                                 <td>
                                     <?php
-                                    $educationLevels = $data['recruit_now_experience_levels'][0];
+                                    $educationLevels = unserialize($data['recruit_now_experience_levels'][0]);
                                     if (!empty($educationLevels)) :
                                         foreach ($educationLevels as $educationLevel) :
                                     ?>
@@ -295,7 +296,7 @@ get_header(); ?>
                                 <td><?php esc_html_e('Categories', 'recruitnow'); ?></td>
                                 <td>
                                     <?php
-                                    $categories = $data['recruit_now_categories'][0];
+                                    $categories = unserialize($data['recruit_now_categories'][0]);
                                     if (!empty($categories)) :
                                         foreach ($categories as $category) :
                                     ?>
@@ -331,7 +332,7 @@ get_header(); ?>
                                 <td><?php esc_html_e('HoursPerWeek', 'recruitnow'); ?></td>
                                 <td>
                                     <?php
-                                    $hoursPerWeek = $data['recruit_now_hours_per_week'][0];
+                                    $hoursPerWeek = unserialize($data['recruit_now_hours_per_week'][0]);
                                     if (!empty($hoursPerWeek)) :
                                         foreach ($hoursPerWeek as $hourPerWeek) :
                                     ?>

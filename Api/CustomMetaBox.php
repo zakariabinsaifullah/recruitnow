@@ -16,11 +16,11 @@ class Custom_Meta_Box {
     private $meta_fields = [
         [
             'type' => 'heading',
-            'label' => 'Heading'
+            'label' => 'General Informations',
         ],
         [
             'type'  => 'text',
-            'label' => 'Vacancies ID',
+            'label' => 'ID',
             'id'    => 'vacancies_id',
         ],
         [
@@ -33,35 +33,20 @@ class Custom_Meta_Box {
             'label' => 'Reference Number',
             'id'    => 'reference_number',
         ],
-        // [
-        //     'type'  => 'text',
-        //     'label' => 'Title',
-        //     'id'    => 'title',
-        // ],
         [
             'type'  => 'datetime',
             'label' => 'Created At',
             'id'    => 'created_at',
         ],
-        // [
-        //     'type'  => 'date',
-        //     'label' => 'Last Edited At',
-        //     'id'    => 'last_edited_at',
-        // ],
-        // [
-        //     'type'  => 'date',
-        //     'label' => 'Publication Date',
-        //     'id'    => 'publication_date',
-        // ],
         [
             'type'  => 'datetime',
             'label' => 'Expiration Date',
             'id'    => 'expiration_date',
         ],
-        // [
-        //     'type' => 'heading',
-        //     'label' => 'Descriptions',
-        // ],
+        [
+            'type' => 'heading',
+            'label' => 'Descriptions',
+        ],
         [
             'type'  => 'textarea',
             'label' => 'Summary',
@@ -97,44 +82,47 @@ class Custom_Meta_Box {
             'label' => 'Application Procedure Description',
             'id'    => 'application_procedure_description',
         ],
-        // [
-        //     'type' => 'heading',
-        //     'label' => 'Facets',
-        // ],
         [
-            'type'  => 'text',
+            'type' => 'heading',
+            'label' => 'Facets',
+        ],
+        [
+            'type'  => 'list',
             'label' => 'Regions',
             'id'    => 'regions',
         ],
         [
-            'type'  => 'text',
+            'type'  => 'list',
             'label' => 'Function Types',
             'id'    => 'function_types',
         ],
         [
-            'type'  => 'text',
+            'type'  => 'list',
             'label' => 'Contract Types',
             'id'    => 'contract_types',
         ],
         [
-            'type'  => 'text',
+            'type'  => 'list',
             'label' => 'Experience Levels',
             'id'    => 'experience_levels',
         ],
         [
-            'type'  => 'text',
+            'type'  => 'list',
             'label' => 'Categories',
             'id'    => 'categories',
         ],
+        /**
+         * need check because data not showing
+         */
         [
             'type'  => 'text',
             'label' => 'Hours Per Week',
             'id'    => 'hours_per_week',
         ],
-        // [
-        //     'type' => 'heading',
-        //     'label' => 'Application',
-        // ],
+        [
+            'type' => 'heading',
+            'label' => 'Application',
+        ],
         [
             'type'  => 'number',
             'label' => 'Max Allowed Applications',
@@ -150,10 +138,10 @@ class Custom_Meta_Box {
             'label' => 'Curriculum Vitae Required',
             'id'    => 'curriculum_vitae_required',
         ],
-        // [
-        //     'type' => 'heading',
-        //     'label' => 'Employment',
-        // ],
+        [
+            'type' => 'heading',
+            'label' => 'Employment',
+        ],
         [
             'type'  => 'number',
             'label' => 'Hours PerWeek Min',
@@ -174,10 +162,10 @@ class Custom_Meta_Box {
             'label' => 'Travel Distance',
             'id'    => 'travel_distance',
         ],
-        // [
-        //     'type' => 'heading',
-        //     'label' => 'Work Location',
-        // ],
+        [
+            'type' => 'heading',
+            'label' => 'Work Location',
+        ],
         [
             'type'  => 'text',
             'label' => 'Street',
@@ -223,18 +211,18 @@ class Custom_Meta_Box {
             'label' => 'Longitude',
             'id'    => 'longitude',
         ],
-        // [
-        //     'type' => 'heading',
-        //     'label' => 'Salary',
-        // ],
+        [
+            'type' => 'heading',
+            'label' => 'Salary',
+        ],
         [
             'type'  => 'number',
-            'label' => 'Salary Min',
+            'label' => 'Min',
             'id'    => 'salary_min',
         ],
         [
             'type'  => 'number',
-            'label' => 'Salary Max',
+            'label' => 'Max',
             'id'    => 'salary_max',
         ],
         [
@@ -242,10 +230,10 @@ class Custom_Meta_Box {
             'label' => 'Description',
             'id'    => 'salary_description',
         ],
-        // [
-        //     'type' => 'heading',
-        //     'label' => 'Recruiter',
-        // ],
+        [
+            'type' => 'heading',
+            'label' => 'Recruiter',
+        ],
         [
             'type'  => 'text',
             'label' => 'Id',
@@ -286,13 +274,13 @@ class Custom_Meta_Box {
             'label' => 'Mobile Phone Number',
             'id'    => 'recruiter_mobile_phone_number',
         ],
-        // [
-        //     'type' => 'heading',
-        //     'label' => 'Office',
-        // ],
+        [
+            'type' => 'heading',
+            'label' => 'Office',
+        ],
         [
             'type'  => 'text',
-            'label' => 'Office Id',
+            'label' => 'Id',
             'id'    => 'office_id',
         ],
         [
@@ -330,10 +318,13 @@ class Custom_Meta_Box {
             'label' => 'Mobile Phone Number',
             'id'    => 'office_mobile_phone_number',
         ],
-        // Office.Address
+        [
+            'type' => 'heading',
+            'label' => 'Office Address',
+        ],
         [
             'type'  => 'text',
-            'label' => 'Office Address Street',
+            'label' => 'Street',
             'id'    => 'office_address_street',
         ],
         [
@@ -376,10 +367,13 @@ class Custom_Meta_Box {
             'label' => 'Longitude',
             'id'    => 'office_address_longitude',
         ],
-        //Employer
+        [
+            'type' => 'heading',
+            'label' => 'Employer',
+        ],
         [
             'type'  => 'text',
-            'label' => 'Employer ID',
+            'label' => 'ID',
             'id'    => 'employer_id',
         ],
         [
@@ -402,10 +396,13 @@ class Custom_Meta_Box {
             'label' => 'Mobile Phone Number',
             'id'    => 'employer_mobile_phone_number',
         ],
-        //Employer.Address
+        [
+            'type' => 'heading',
+            'label' => 'Employer Address',
+        ],
         [
             'type'  => 'text',
-            'label' => 'Employer Street',
+            'label' => 'Street',
             'id'    => 'employer_address_street',
         ],
         [
@@ -512,7 +509,7 @@ class Custom_Meta_Box {
             $meta_id = isset($meta_field['id']) ? $meta_field['id'] : '';
             $meta_type = isset($meta_field['type']) ? $meta_field['type'] : '';
             $label = '<label for="' . $this->prefix . $meta_id . '">' . $meta_field['label'] . '</label>';
-            $meta_value = get_post_meta($post->ID, $this->prefix . $meta_id , true);
+            $meta_value = get_post_meta($post->ID, $this->prefix . $meta_id, true);
 
             if (empty($meta_value)) {
                 if (isset($meta_field['default'])) {
@@ -546,6 +543,10 @@ class Custom_Meta_Box {
                     );
                     break;
 
+                case 'list':
+                    $input = $this->format_list($meta_value);
+                    break;
+
                 default:
                     $input = sprintf(
                         '<input %s id="%s" name="%s" type="%s" value="%s">',
@@ -556,17 +557,29 @@ class Custom_Meta_Box {
                         $meta_value
                     );
             }
-            $output .= $this->format_rows($label, $input, $meta_type );
+            $output .= $this->format_rows($label, $input, $meta_type);
         }
         echo '<table class="form-table"><tbody>' . $output . '</tbody></table>';
     }
 
-    public function format_rows($label, $input, $meta_type ) {
-        if( $meta_type == 'heading' ) {
+    public function format_rows($label, $input, $meta_type) {
+        if ($meta_type == 'heading') {
             return '<tr><td colspan="2">' . $input . '</td></tr>';
         } else {
             return '<tr><th>' . $label . '</th><td>' . $input . '</td></tr>';
         }
+    }
+
+    public function format_list($meta_value) {
+        if (empty($meta_value)) {
+            return 'Empty Data';
+        }
+        $html = '<ul>';
+        foreach ($meta_value as $value) {
+            $html .= '<li>' . $value['Name'] . '</li>';
+        }
+        $html .= '</ul>';
+        return $html;
     }
 
     public function save_fields($post_id) {
@@ -590,6 +603,12 @@ class Custom_Meta_Box {
                         $_POST[$this->prefix . $meta_field['id']] = sanitize_text_field($_POST[$this->prefix . $meta_field['id']]);
                         break;
                     case 'number':
+                        $_POST[$this->prefix . $meta_field['id']] = sanitize_text_field($_POST[$this->prefix . $meta_field['id']]);
+                        break;
+                    case 'list':
+                        $_POST[$this->prefix . $meta_field['id']] = rest_sanitize_array($_POST[$this->prefix . $meta_field['id']]);
+                        break;
+                    default:
                         $_POST[$this->prefix . $meta_field['id']] = sanitize_text_field($_POST[$this->prefix . $meta_field['id']]);
                         break;
                 }

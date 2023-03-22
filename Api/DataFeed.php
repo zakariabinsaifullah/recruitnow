@@ -1,8 +1,9 @@
 <?php
 
-
 /**
  * Data Feed
+ * Fetch Data from Server
+ * Insert Data to Database
  */
 
 class RcnDataFeed {
@@ -25,9 +26,6 @@ class RcnDataFeed {
          * If Cache not exists then Fetch from Live Server
          */
         $this->fetch_remote_data();
-        // echo '<pre>';
-        // print_r($fetch_data);
-        // echo '</pre>';
 
         $this->rcn_feed_output();
     }
@@ -163,7 +161,9 @@ function recruitnow_api_data_feed() {
     return RcnDataFeed::init();
 }
 
-// kick-off the data feed
+/**
+ * kick-off the data feed
+ */
 recruitnow_api_data_feed();
 
 /**
@@ -186,7 +186,6 @@ function rcn_add_custom_post() {
 
     if ('api_end_point_missing' !== $rcn_feed_data && false !== $rcn_feed_data) {
         foreach ($rcn_feed_data as $element) {
-            // print_r($element);
 
             $post = array(
                 'post_title'     => $element['Title'],
@@ -213,11 +212,17 @@ function rcn_add_custom_post() {
                 $post_id = wp_insert_post($post);
             }
 
+            /**
+             * General Informations
+             */
             update_post_meta($post_id, $prefix . 'vacancies_id', isset($element['Id']) ? $element['Id'] : '');
             update_post_meta($post_id, $prefix . 'remote_id', isset($element['RemoteId']) ? $element['RemoteId'] : '');
             update_post_meta($post_id, $prefix . 'reference_number', isset($element['ReferenceNumber']) ? $element['ReferenceNumber'] : '');
             update_post_meta($post_id, $prefix . 'created_at', isset($element['CreatedAt']) ? $element['CreatedAt'] : '');
             update_post_meta($post_id, $prefix . 'expiration_date', isset($element['ExpirationDate']) ? $element['ExpirationDate'] : '');
+            /**
+             * Descriptions
+             */
             update_post_meta($post_id, $prefix . 'summary', isset($element['Descriptions']['Summary']) ? $element['Descriptions']['Summary'] : '');
             update_post_meta($post_id, $prefix . 'function_description', isset($element['Descriptions']['FunctionDescription']) ? $element['Descriptions']['FunctionDescription'] : '');
             update_post_meta($post_id, $prefix . 'client_description', isset($element['Descriptions']['ClientDescription']) ? $element['Descriptions']['ClientDescription'] : '');
@@ -225,19 +230,34 @@ function rcn_add_custom_post() {
             update_post_meta($post_id, $prefix . 'offer_description', isset($element['Descriptions']['OfferDescription']) ? $element['Descriptions']['OfferDescription'] : '');
             update_post_meta($post_id, $prefix . 'additional_description', isset($element['Descriptions']['AdditionalDescription']) ? $element['Descriptions']['AdditionalDescription'] : '');
             update_post_meta($post_id, $prefix . 'application_procedure_description', isset($element['Descriptions']['ApplicationProcedureDescription']) ? $element['Descriptions']['ApplicationProcedureDescription'] : '');
-            update_post_meta($post_id, $prefix . 'regions', isset($element['Facets']['Regions']['Name']) ? $element['Facets']['Regions']['Name'] : '');
-            update_post_meta($post_id, $prefix . 'function_types', isset($element['Facets']['FunctionTypes']['Name']) ? $element['Facets']['FunctionTypes']['Name'] : '');
-            update_post_meta($post_id, $prefix . 'contract_types', isset($element['Facets']['ContractTypes']['Name']) ? $element['Facets']['ContractTypes']['Name'] : '');
-            update_post_meta($post_id, $prefix . 'experience_levels', isset($element['Facets']['ExperienceLevels']['Name']) ? $element['Facets']['ExperienceLevels']['Name'] : '');
-            update_post_meta($post_id, $prefix . 'categories', isset($element['Facets']['Categories']['Name']) ? $element['Facets']['Categories']['Name'] : '');
+            /**
+             * Facets
+             */
+            update_post_meta($post_id, $prefix . 'regions', isset($element['Facets']['Regions']) ? $element['Facets']['Regions'] : '');
+            update_post_meta($post_id, $prefix . 'function_types', isset($element['Facets']['FunctionTypes']) ? $element['Facets']['FunctionTypes'] : '');
+            update_post_meta($post_id, $prefix . 'contract_types', isset($element['Facets']['ContractTypes']) ? $element['Facets']['ContractTypes'] : '');
+            update_post_meta($post_id, $prefix . 'experience_levels', isset($element['Facets']['ExperienceLevels']) ? $element['Facets']['ExperienceLevels'] : '');
+            update_post_meta($post_id, $prefix . 'categories', isset($element['Facets']['Categories']) ? $element['Facets']['Categories'] : '');
+            /**
+             * need check because data not showing
+             */
             update_post_meta($post_id, $prefix . 'hours_per_week', isset($element['Facets']['HoursPerWeek']['Name']) ? $element['Facets']['HoursPerWeek']['Name'] : '');
+            /**
+             * Application
+             */
             update_post_meta($post_id, $prefix . 'max_allowed_applications', isset($element['Application']['MaxAllowedApplications']) ? $element['Application']['MaxAllowedApplications'] : '');
             update_post_meta($post_id, $prefix . 'remaining_applications', isset($element['Application']['RemainingApplications']) ? $element['Application']['RemainingApplications'] : '');
             update_post_meta($post_id, $prefix . 'curriculum_vitae_required', isset($element['Application']['CurriculumVitaeRequired']) ? $element['Application']['CurriculumVitaeRequired'] : '');
+            /**
+             * Employment
+             */
             update_post_meta($post_id, $prefix . 'hours_perweek_min', isset($element['Employment']['HoursPerWeekMin']) ? $element['Employment']['HoursPerWeekMin'] : '');
             update_post_meta($post_id, $prefix . 'hours_per_week_max', isset($element['Employment']['HoursPerWeekMax']) ? $element['Employment']['HoursPerWeekMax'] : '');
             update_post_meta($post_id, $prefix . 'shift_service', isset($element['Facets']['ShiftServices']) ? $element['Facets']['ShiftServices'] : '');
             update_post_meta($post_id, $prefix . 'travel_distance', isset($element['Employment']['TravelDistance']) ? $element['Employment']['TravelDistance'] : '');
+            /**
+             * Work Location
+             */
             update_post_meta($post_id, $prefix . 'street', isset($element['WorkLocation']['Street']) ? $element['WorkLocation']['Street'] : '');
             update_post_meta($post_id, $prefix . 'house_number', isset($element['WorkLocation']['Housenumber']) ? $element['WorkLocation']['Housenumber'] : '');
             update_post_meta($post_id, $prefix . 'house_nmber_suffix', isset($element['WorkLocation']['HousenumberSuffix']) ? $element['WorkLocation']['HousenumberSuffix'] : '');
@@ -247,9 +267,15 @@ function rcn_add_custom_post() {
             update_post_meta($post_id, $prefix . 'region', isset($element['WorkLocation']['Region']) ? $element['WorkLocation']['Region'] : '');
             update_post_meta($post_id, $prefix . 'latitude', isset($element['WorkLocation']['Latitude']) ? $element['WorkLocation']['Latitude'] : '');
             update_post_meta($post_id, $prefix . 'longitude', isset($element['WorkLocation']['Longitude']) ? $element['WorkLocation']['Longitude'] : '');
+            /**
+             * Salary
+             */
             update_post_meta($post_id, $prefix . 'salary_min', isset($element['Salary']['SalaryMin']) ? $element['Salary']['SalaryMin'] : '');
             update_post_meta($post_id, $prefix . 'salary_max', isset($element['Salary']['SalaryMax']) ? $element['Salary']['SalaryMax'] : '');
             update_post_meta($post_id, $prefix . 'salary_description', isset($element['Salary']['Description']) ? $element['Salary']['Description'] : '');
+            /**
+             * Recruiter
+             */
             update_post_meta($post_id, $prefix . 'recruiter_id', isset($element['Recruiter']['Id']) ? $element['Recruiter']['Id'] : '');
             update_post_meta($post_id, $prefix . 'recruiter_remote_id', isset($element['Recruiter']['RemoteId']) ? $element['Recruiter']['RemoteId'] : '');
             update_post_meta($post_id, $prefix . 'recruiter_first_name', isset($element['Recruiter']['FirstName']) ? $element['Recruiter']['FirstName'] : '');
@@ -258,6 +284,9 @@ function rcn_add_custom_post() {
             update_post_meta($post_id, $prefix . 'recruiter_email_address', isset($element['Recruiter']['EmailAddress']) ? $element['Recruiter']['EmailAddress'] : '');
             update_post_meta($post_id, $prefix . 'recruiter_phone_number', isset($element['Recruiter']['PhoneNumber']) ? $element['Recruiter']['PhoneNumber'] : '');
             update_post_meta($post_id, $prefix . 'recruiter_mobile_phone_number', isset($element['Recruiter']['MobilePhoneNumber']) ? $element['Recruiter']['MobilePhoneNumber'] : '');
+            /**
+             * Office
+             */
             update_post_meta($post_id, $prefix . 'office_id', isset($element['Office']['Id']) ? $element['Office']['Id'] : '');
             update_post_meta($post_id, $prefix . 'office_remote_id', isset($element['Office']['RemoteId']) ? $element['Office']['RemoteId'] : '');
             update_post_meta($post_id, $prefix . 'office_name', isset($element['Office']['Name']) ? $element['Office']['Name'] : '');
@@ -266,6 +295,9 @@ function rcn_add_custom_post() {
             update_post_meta($post_id, $prefix . 'office_email_address', isset($element['Office']['EmailAddress']) ? $element['Office']['EmailAddress'] : '');
             update_post_meta($post_id, $prefix . 'office_phone_number', isset($element['Office']['PhoneNumber']) ? $element['Office']['PhoneNumber'] : '');
             update_post_meta($post_id, $prefix . 'office_mobile_phone_number', isset($element['Office']['MobilePhoneNumber']) ? $element['Office']['MobilePhoneNumber'] : '');
+            /**
+             * Office Address
+             */
             update_post_meta($post_id, $prefix . 'office_address_street', isset($element['Office']['Address']['Street']) ? $element['Office']['Address']['Street'] : '');
             update_post_meta($post_id, $prefix . 'office_address_house_number', isset($element['Office']['Address']['Housenumber']) ? $element['Office']['Address']['Housenumber'] : '');
             update_post_meta($post_id, $prefix . 'office_address_house_number_suffix', isset($element['Office']['Address']['HousenumberSuffix']) ? $element['Office']['Address']['HousenumberSuffix'] : '');
@@ -275,11 +307,17 @@ function rcn_add_custom_post() {
             update_post_meta($post_id, $prefix . 'office_address_region', isset($element['Office']['Address']['Region']) ? $element['Office']['Address']['Region'] : '');
             update_post_meta($post_id, $prefix . 'office_address_latitude', isset($element['Office']['Address']['Latitude']) ? $element['Office']['Address']['Latitude'] : '');
             update_post_meta($post_id, $prefix . 'office_address_longitude', isset($element['Office']['Address']['Longitude']) ? $element['Office']['Address']['Longitude'] : '');
+            /**
+             * Employer
+             */
             update_post_meta($post_id, $prefix . 'employer_id', isset($element['Employer']['Id']) ? $element['Employer']['Id'] : '');
             update_post_meta($post_id, $prefix . 'employer_remote_id', isset($element['Employer']['RemoteId']) ? $element['Employer']['RemoteId'] : '');
             update_post_meta($post_id, $prefix . 'employer_email_address', isset($element['Employer']['EmailAddress']) ? $element['Employer']['EmailAddress'] : '');
             update_post_meta($post_id, $prefix . 'employer_phone_number', isset($element['Employer']['PhoneNumber']) ? $element['Employer']['PhoneNumber'] : '');
             update_post_meta($post_id, $prefix . 'employer_mobile_phone_number', isset($element['Employer']['MobilePhoneNumber']) ? $element['Employer']['MobilePhoneNumber'] : '');
+            /**
+             * Employer Address
+             */
             update_post_meta($post_id, $prefix . 'employer_address_street', isset($element['Employer']['Address']['Street']) ? $element['Employer']['Address']['Street'] : '');
             update_post_meta($post_id, $prefix . 'employer_address_house_number', isset($element['Employer']['Address']['Housenumber']) ? $element['Employer']['Address']['Housenumber'] : '');
             update_post_meta($post_id, $prefix . 'employer_address_house_number_suffix', isset($element['Employer']['Address']['HousenumberSuffix']) ?  $element['Employer']['Address']['HousenumberSuffix'] : '');
@@ -323,17 +361,18 @@ function rcn_feed_refresh() {
 /**
  * Below Backup Data for Testing
  */
+/*
+$rcn_feed_data = rcn_feed_output();
 
-// $rcn_feed_data = rcn_feed_output();
-
-// if ('api_end_point_missing' !== $rcn_feed_data && false !== $rcn_feed_data) {
-// 	// var_dump($rcn_feed_data);
-// 	foreach ($rcn_feed_data as $element) {
-// 		// print_r($element);
-// 		// format publication date to Y-m-d
-// 		echo date('Y-m-d', strtotime($element['PublicationDate']));
-// 		// print_r($element['PublicationDate']);
-// 		// print_r($element['Id']);
-// 		// print_r($element['Title']);
-// 	}
-// }
+if ('api_end_point_missing' !== $rcn_feed_data && false !== $rcn_feed_data) {
+	// var_dump($rcn_feed_data);
+	foreach ($rcn_feed_data as $element) {
+		// print_r($element);
+		// format publication date to Y-m-d
+		echo date('Y-m-d', strtotime($element['PublicationDate']));
+		// print_r($element['PublicationDate']);
+		// print_r($element['Id']);
+		// print_r($element['Title']);
+	}
+}
+*/
