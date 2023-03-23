@@ -7,13 +7,15 @@
     padding-bottom: 30px;
 }
 
-.archive-icon-wrap {
+.recruit-archive-icon-wrap {
     font-size: 18px;
 }
 
-.archive-icon-wrap svg {
-    width: 1em;
-    height: 1em;
+.recruit-archive-icon-wrap svg {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    fill: #bbbbbb;
 }
 
 .posts-section .main-wrapper {
